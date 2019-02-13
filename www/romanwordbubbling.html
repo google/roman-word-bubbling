@@ -1,0 +1,29 @@
+
+<head>
+<title>Roman Word Bubbling</title>
+</head>
+<body>
+<canvas id="textCanvas" width=400 height=200 hidden=true></canvas>
+<div align="right">
+    <a href="about.html">About</a>
+</div>
+Font Size: <input id="fontSize" type="number" name="font size" value=70 oninput="renderImage()">
+&nbsp&nbspGap Width: <input id="gapWidth" type="number" name="gap width" value=9 oninput="renderImage()">
+&nbsp&nbspOutline Width: <input id="outlineThickness" type="number" name="outline thickness" value=9 oninput="renderImage()">
+<br>
+<input id="blurRadius" type="number" name="Blur Radius" value=3 oninput="renderImage()" hidden=true>
+<br>
+Text: <input id="textInput" type="text" name="words"> 
+&nbsp&nbsp<input id="removeText" type="checkbox" name="remove text" onclick="renderImage()">Remove text
+&nbsp&nbsp&nbsp&nbsp&nbsp<input id="darkMode" type="checkbox" name="dark mode" onclick="renderImage()">Invert Text
+<br>
+<br>
+<input id="borderColor" type="color" value="#ff0000" oninput="updateColor()">
+Bubble color
+
+<br><br>
+<canvas id="output"></canvas>
+
+<script src="third_party/OpenCV/opencv.js" type="text/javascript"></script>
+
+<script src="js/romanwordbubbling.js" type="text/javascript"></script>
