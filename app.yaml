@@ -17,19 +17,27 @@ threadsafe: true
 
 handlers:
 
-- url: /bWFsdmVla2F0b21teWh0bWw/(.*)
+- url: /
+  static_files: www/index.html
+  upload: www/index.html
+
+- url: /(.*)
   static_files: www/\1
   upload: www/(.*)
 
-- url: /bWFsdmVla2F0b21teWh0bWw/(.*)
+- url: /(.*)
   static_files: third_party/OpenCV/\1
   upload: third_party/OpenCV/(.*)
 
-- url: /bWFsdmVla2F0b21teWh0bWw/(.*)
+- url: /(.*)
   static_files: js/\1
   upload: js/(.*)
 
-- url: /.*
+- url: /bWFsdmVla2F0b21teWh0bWw/(.*)
+  static_files: www/bWFsdmVla2F0b21teWh0bWw/(.*)
+  upload: www/bWFsdmVla2F0b21teWh0bWw/(.*)
+
+- url: /webservice/.*
   script: main.app
 
 libraries:
