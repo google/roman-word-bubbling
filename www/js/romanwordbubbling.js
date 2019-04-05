@@ -45,6 +45,16 @@ function updateColor() {
   document.getElementById("borderColor").value = hexValue
   renderImage()
 }
+function loadCustomFont() {
+  var customFont = new FontFace("userFont", "url(file:///usr/local/google/home/tszalapski/roman-word-bubbling/ttf/OpenDyslexic-Regular.ttf)")
+  loadedFont = customFont.load().then(function(loadedFont){
+    console.log(loadedFont);
+    document.fonts.add(loadedFont)
+    console.log(document.fonts)
+    renderImage()
+    console.log("done")
+  })
+}
 function renderImage() {
   let fontSize = parseInt(document.getElementById('fontSize').value, 10);
   // Set gapWidth and outlineThickness as a percentage of the font size
@@ -58,11 +68,10 @@ function renderImage() {
   let blurRadius = parseInt(document.getElementById('blurRadius').value, 10);
   let borderColorHex = document.getElementById("borderColor").value
 
-
-  tCtx.font = fontSize + "px 'Comic Sans MS'"
+  tCtx.font = fontSize + "px userFont"
   tCtx.canvas.width = tCtx.measureText(text).width + padding*2;
   tCtx.canvas.height = 1.25*fontSize + 2*padding;
-  tCtx.font = fontSize + "px 'Comic Sans MS'"
+  tCtx.font = fontSize + "px userFont"
   tCtx.fillStyle = 'white';
   tCtx.fillRect(0, 0, tCtx.canvas.width, tCtx.canvas.height);
   tCtx.fillStyle = 'black';
