@@ -18,6 +18,8 @@
 document.getElementById("textInput").addEventListener('keyup', function (){
     renderImage();
 }, false);
+renderImage()
+
 function updateColor() {
   hexValue = document.getElementById("borderColor").value
 
