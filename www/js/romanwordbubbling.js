@@ -64,21 +64,17 @@ function updateColor() {
 function loadCustomFont() {
   file = document.getElementById("fontFile").files[0]
   if(file) {
-    console.log(file)
     var reader = new FileReader()
     reader.onload = function(event) {
       var customFont = new FontFace("userFont", event.target.result)
       customFont.load().then(function(loadedFont){
-        console.log(loadedFont);
         document.fonts.add(loadedFont)
         fontName = "userFont"
-        console.log(document.fonts)
         renderImage()
-        console.log("done")
       })
     }
     reader.readAsArrayBuffer(file)
-  } else { console.log("No file selected")}
+  }
 }
 function renderImage() {
   let fontSize = parseInt(document.getElementById('fontSize').value, 10);
