@@ -24,11 +24,17 @@ document.getElementById("textInput").addEventListener('keyup', function (){
 renderImage()
 
 function updateFont() {
+  fileButton = document.getElementById("fontFile")
   selectedFont = document.getElementById("fontChooser").value
   if (selectedFont === "custom") {
-    document.getElementById("fontFile").hidden=false
+    fileButton.hidden=false
   } else {
-    document.getElementById("fontFile").hidden=true;
+    // Hide the file picker if it isn't already.
+    // Also clear it so the onchange event will fire again
+    if (fileButton.hidden == false) {
+      fileButton.hidden=true
+      fileButton.value = ""
+    }
     fontName = selectedFont
   }
   renderImage()
