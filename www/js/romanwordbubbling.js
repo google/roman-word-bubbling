@@ -15,9 +15,25 @@
  * limitations under the License.
  *
  */
+
+var fontName = "'Comic Sans MS'"
+
 document.getElementById("textInput").addEventListener('keyup', function (){
     renderImage();
 }, false);
+renderImage()
+
+function updateFont() {
+  selectedFont = document.getElementById("fontChooser").value
+  if (selectedFont === "custom") {
+    document.getElementById("fontFile").hidden=false
+  } else {
+    document.getElementById("fontFile").hidden=true;
+    fontName = selectedFont
+  }
+  renderImage()
+}
+
 function updateColor() {
   hexValue = document.getElementById("borderColor").value
 
@@ -46,14 +62,21 @@ function updateColor() {
   renderImage()
 }
 function loadCustomFont() {
-  var customFont = new FontFace("userFont", "url(file:///usr/local/google/home/tszalapski/roman-word-bubbling/ttf/OpenDyslexic-Regular.ttf)")
-  loadedFont = customFont.load().then(function(loadedFont){
-    console.log(loadedFont);
-    document.fonts.add(loadedFont)
-    console.log(document.fonts)
-    renderImage()
-    console.log("done")
-  })
+  file = document.getElementById("fontFile").files[0]
+  console.log(file)
+  var reader = new FileReader()
+  reader.onload = function(event) {
+    var customFont = new FontFace("userFont", event.target.result)
+    customFont.load().then(function(loadedFont){
+      console.log(loadedFont);
+      document.fonts.add(loadedFont)
+      fontName = "userFont"
+      console.log(document.fonts)
+      renderImage()
+      console.log("done")
+    })
+  }
+  reader.readAsArrayBuffer(file)
 }
 function renderImage() {
   let fontSize = parseInt(document.getElementById('fontSize').value, 10);
@@ -68,10 +91,10 @@ function renderImage() {
   let blurRadius = parseInt(document.getElementById('blurRadius').value, 10);
   let borderColorHex = document.getElementById("borderColor").value
 
-  tCtx.font = fontSize + "px userFont"
+  tCtx.font = fontSize + "px " + fontName
   tCtx.canvas.width = tCtx.measureText(text).width + padding*2;
   tCtx.canvas.height = 1.25*fontSize + 2*padding;
-  tCtx.font = fontSize + "px userFont"
+  tCtx.font = fontSize + "px " + fontName
   tCtx.fillStyle = 'white';
   tCtx.fillRect(0, 0, tCtx.canvas.width, tCtx.canvas.height);
   tCtx.fillStyle = 'black';

@@ -18,9 +18,15 @@ Text: <input id="textInput" type="text" name="words">
 &nbsp&nbsp&nbsp&nbsp&nbsp<input id="darkMode" type="checkbox" name="dark mode" onclick="renderImage()">Invert Text
 <br>
 <br>
-<input id="borderColor" type="color" value="#ff0000" oninput="updateColor()">
-Bubble color
-<button type="button" onclick="loadCustomFont()">Custom Font</button>
+Bubble color: <input id="borderColor" type="color" value="#ff0000" oninput="updateColor()">
+&nbsp&nbspFont: <select id="fontChooser" onchange="updateFont()">
+    <option value="'Comic Sans MS'">Comic Sans</option>
+    <option value="Helvetica">Helvetica</option>
+    <option value="'Trebuchet MS'">Trebuchet</option>
+    <option value="Verdana">Verdana</option>
+    <option value="custom">Custom...</option>
+  </select>
+  <input type="file" id="fontFile" accept=".ttf" hidden=true oninput="loadCustomFont()">
 
 <br><br>
 <canvas id="output"></canvas>
