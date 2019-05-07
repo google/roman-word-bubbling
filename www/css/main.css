@@ -1,0 +1,166 @@
+/* Reset */
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+main {
+  display: flex;
+}
+
+/* Main Styles */
+
+.close {
+  font-size: 24px;
+  font-weight: normal;
+  color: #888;
+  cursor: pointer;
+}
+
+.input-container {
+  padding: 32px 16px;
+  border-bottom: 1px solid #dedede;
+}
+
+#textCanvas {
+  display: none;
+}
+
+.canvas-container {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  margin-bottom: 20px;
+}
+
+.input.checkbox {
+  display: flex;
+  align-items: center;
+  margin-left: -12px;
+  margin-bottom: 0;
+}
+
+.input.checkbox .label {
+  margin-bottom: 0;
+}
+
+.input:last-of-type {
+  margin-bottom: 0;
+}
+
+.label {
+  color: #888;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.label.slider {
+  margin-bottom: 0;
+}
+
+.color {
+  height: 20px;
+  width: 20px;
+  margin: 0 20px 20px 0;
+  background: yellow;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.color.selected:after {
+  content: "\2714";
+  color: white;
+  font-size: 12px;
+}
+
+.color:first-of-type {
+  background: red;
+}
+
+.color:last-of-type {
+  background: blue;
+}
+
+.colorOptions {
+  display: flex;
+}
+
+.about {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  font-size: 12px;
+  display: block;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1.5px solid #616161;
+  color: #616161;
+  font-weight: bold;
+  margin: 20px 24px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* MDC Overrides */
+
+.mdc-drawer {
+  height: 100%;
+  border-left: 1px solid #dedede;
+}
+
+.mdc-drawer__header {
+  border-bottom: 1px solid #dedede;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mdc-text-field.mdc-text-field--outlined.mdc-text-field--no-label {
+  height: 36px;
+}
+
+.mdc-text-field--outlined .mdc-text-field__input {
+  padding: 16px;
+  font-size: 14px;
+}
+
+.mdc-select {
+  width: 100%;
+}
+
+.mdc-select--outlined .mdc-select__native-control {
+  padding: 0;
+  height: 36px;
+  font-size: 14px;
+}
+
+.mdc-select--outlined {
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+
+.mdc-select__dropdown-icon {
+  bottom: auto;
+}
+
+.mdc-text-field {
+  width: 100%;
+}
