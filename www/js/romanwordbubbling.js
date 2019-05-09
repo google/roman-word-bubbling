@@ -80,6 +80,10 @@ function renderImage() {
     document.getElementById("fontSize").dataset.value,
     10
   );
+  let letterSpacing = parseInt(
+    document.getElementById("letterSpacing").dataset.value,
+    10
+  );
   // Set gapWidth and outlineThickness as a percentage of the font size
   let gapWidth =
     (fontSize *
@@ -93,6 +97,13 @@ function renderImage() {
   let removeText = document.getElementById("removeText").checked;
   let darkMode = document.getElementById("darkMode").checked;
   let text = document.getElementById("textInput").value;
+  var style = document.createElement("style");
+  style.type = "text/css";
+  style.innerHTML = ".spacing { letter-spacing: " + letterSpacing + "; }";
+  document.getElementsByTagName('head')[0].appendChild(style);
+
+  document.getElementById("textCanvas").classList.add("spacing");
+
   var tCtx = document.getElementById("textCanvas").getContext("2d"); //Hidden canvas
   let blurRadius = 3;
   let borderColorHex = getColor();

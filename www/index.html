@@ -95,6 +95,30 @@
               </div>
             </div>
           </div>
+          <div class="input">
+            <div class="label slider">Letter Spacing</div>
+            <div
+              class="mdc-slider"
+              id="letterSpacing"
+              tabindex="0"
+              role="slider"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              aria-label="Select Value"
+              data-value="0"
+            >
+              <div class="mdc-slider__track-container">
+                <div class="mdc-slider__track"></div>
+              </div>
+              <div class="mdc-slider__thumb-container">
+                <svg class="mdc-slider__thumb" width="21" height="21">
+                  <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                </svg>
+                <div class="mdc-slider__focus-ring"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="input-container">
@@ -212,6 +236,12 @@
     const fontSizeSlider = new mdc.slider.MDCSlider(fontSizeElement);
     fontSizeSlider.listen("MDCSlider:input", () => {
       fontSizeElement.dataset.value = fontSizeSlider.value;
+      renderImage();
+    });
+    const letterSpacingElement = document.getElementById("letterSpacing");
+    const letterSpacingSlider = new mdc.slider.MDCSlider(letterSpacingElement);
+    letterSpacingSlider.listen("MDCSlider:input", () => {
+      letterSpacingElement.dataset.value = letterSpacingSlider.value;
       renderImage();
     });
     const outlineThicknessElement = document.getElementById("outlineThickness");
