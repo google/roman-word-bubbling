@@ -72,7 +72,7 @@
             />
           </div>
           <div class="input">
-            <div class="label slider">Font Size</div>
+            <div class="label slider">Text Size</div>
             <div
               class="mdc-slider"
               id="fontSize"
@@ -95,9 +95,35 @@
               </div>
             </div>
           </div>
+          <div class="input checkbox">
+            <div class="mdc-checkbox">
+              <input
+                type="checkbox"
+                class="mdc-checkbox__native-control"
+                id="removeText"
+                type="checkbox"
+                name="remove text"
+                onclick="renderImage()"
+              />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path
+                    class="mdc-checkbox__checkmark-path"
+                    fill="none"
+                    d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                  />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <div class="label">Hide text</div>
+          </div>
         </div>
       </div>
       <div class="input-container">
+        <div class="input-container-title label">
+          Outline
+        </div>
         <div class="input">
           <div class="label">Outline color</div>
           <div class="colorOptions">
@@ -107,7 +133,7 @@
           </div>
         </div>
         <div class="input">
-          <div class="label slider">Outline Width %</div>
+          <div class="label slider">Outline Weight</div>
           <div
             class="mdc-slider"
             id="outlineThickness"
@@ -131,7 +157,7 @@
           </div>
         </div>
         <div class="input">
-          <div class="label slider">Gap Width %:</div>
+          <div class="label slider">Outline Gap</div>
           <div
             class="mdc-slider"
             id="gapWidth"
@@ -154,28 +180,10 @@
             </div>
           </div>
         </div>
-        <div class="input checkbox">
-          <div class="mdc-checkbox">
-            <input
-              type="checkbox"
-              class="mdc-checkbox__native-control"
-              id="removeText"
-              type="checkbox"
-              name="remove text"
-              onclick="renderImage()"
-            />
-            <div class="mdc-checkbox__background">
-              <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                <path
-                  class="mdc-checkbox__checkmark-path"
-                  fill="none"
-                  d="M1.73,12.91 8.1,19.28 22.79,4.59"
-                />
-              </svg>
-              <div class="mdc-checkbox__mixedmark"></div>
-            </div>
-          </div>
-          <div class="label">Remove text</div>
+      </div>
+      <div class="input-container">
+        <div class="input-container-title label">
+          Outline
         </div>
         <div class="input checkbox">
           <div class="mdc-checkbox">

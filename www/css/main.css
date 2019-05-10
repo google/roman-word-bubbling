@@ -23,6 +23,11 @@ main {
   border-bottom: 1px solid #dedede;
 }
 
+.input-container-title.label {
+  color: #444;
+  margin-bottom: 24px;
+}
+
 #textCanvas {
   display: none;
 }
@@ -32,6 +37,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: calc(100vw - 256px - 66px);
 }
 
 .input {
