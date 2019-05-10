@@ -125,6 +125,7 @@ main {
 
 .mdc-drawer {
   height: 100%;
+  min-height: 100vh;
   border-left: 1px solid #dedede;
 }
 

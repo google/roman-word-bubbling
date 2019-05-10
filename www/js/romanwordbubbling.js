@@ -137,10 +137,12 @@ function renderImage() {
   g = parseInt(borderColorHex.substring(3, 5), 16);
   b = parseInt(borderColorHex.substring(5, 7), 16);
   if (darkMode) {
+    document.body.style.backgroundColor = "black";
     // Invert the color for dark mode because it will get inverted back later
     // Doing it this way ensures the blurring will use the right background color
     color = new cv.Scalar(255 - r, 255 - g, 255 - b);
   } else {
+    document.body.style.backgroundColor = "transparent";
     color = new cv.Scalar(r, g, b);
   }
   cv.drawContours(
