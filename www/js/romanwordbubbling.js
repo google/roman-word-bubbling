@@ -44,20 +44,11 @@ function updateFont() {
   renderImage();
 }
 
+// Returns the colors in an array in ["r", "g", "b"] format
 function getColor() {
-  const child = document.getElementsByClassName("selected")[0];
-  const parent = child.parentNode;
-  const index = Array.prototype.indexOf.call(parent.children, child);
-  switch (index) {
-    case 0:
-      return "#ff0000";
-    case 1:
-      return "#ffff00";
-    case 2:
-      return "#0000ff";
-    default:
-      return "#000000";
-  }
+  const colorNode = document.getElementsByClassName("selected")[0];
+  rgbString = colorNode.style.backgroundColor;
+  return rgbString.substr(4, rgbString.length-5).replace(" ", "").split(",");
 }
 
 function loadCustomFont() {
@@ -95,7 +86,8 @@ function renderImage() {
   let text = document.getElementById("textInput").value;
   var tCtx = document.getElementById("textCanvas").getContext("2d"); //Hidden canvas
   let blurRadius = 3;
-  let borderColorHex = getColor();
+
+  let borderColorRgb = getColor();
 
   tCtx.font = fontSize + "px " + fontName;
   tCtx.canvas.width = tCtx.measureText(text).width + padding * 2;
@@ -133,9 +125,10 @@ function renderImage() {
     cv.CHAIN_APPROX_SIMPLE
   );
   let color = null;
-  r = parseInt(borderColorHex.substring(1, 3), 16);
-  g = parseInt(borderColorHex.substring(3, 5), 16);
-  b = parseInt(borderColorHex.substring(5, 7), 16);
+  r = parseInt(borderColorRgb[0], 10);
+  g = parseInt(borderColorRgb[1], 10);
+  b = parseInt(borderColorRgb[2], 10);
+
   if (darkMode) {
     document.body.style.backgroundColor = "black";
     // Invert the color for dark mode because it will get inverted back later

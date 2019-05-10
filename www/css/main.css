@@ -73,8 +73,8 @@ main {
 .color {
   height: 20px;
   width: 20px;
-  margin: 0 20px 20px 0;
-  background: yellow;
+  margin: 0 10px 20px 0;
+  background: red;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -84,16 +84,7 @@ main {
 
 .color.selected:after {
   content: "\2714";
-  color: white;
   font-size: 12px;
-}
-
-.color:first-of-type {
-  background: red;
-}
-
-.color:last-of-type {
-  background: blue;
 }
 
 .colorOptions {
