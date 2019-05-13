@@ -17,7 +17,11 @@
  */
 
 var fontName = "'Comic Sans MS'";
-
+// On desktop (or anything with a wide enough screen) use full name for sample
+// Text needs 744, (?) menu is 66, drawer is 256, 15 for scrollbar
+if (window.innerWidth >= 744+256+66+15) {
+  document.getElementById("textInput").value = "Roman Word Bubbling";
+}
 document.getElementById("textInput").addEventListener(
   "keyup",
   function() {
