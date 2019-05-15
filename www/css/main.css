@@ -410,11 +410,11 @@ input[type="number"] {
 }
 
 .mdc-text-field.mdc-text-field--outlined.mdc-text-field--no-label {
-  height: 36px;
+  height: 70px;
 }
 
 .mdc-text-field--outlined .mdc-text-field__input {
-  padding: 16px;
+  padding: 7px;
   font-size: 14px;
 }
 
