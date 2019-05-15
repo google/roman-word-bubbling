@@ -93,14 +93,26 @@ function renderImage() {
 
   let borderColorRgb = getColor();
 
-  tCtx.font = fontSize + "px " + fontName;
-  tCtx.canvas.width = tCtx.measureText(text).width + padding * 2;
-  tCtx.canvas.height = 1.25 * fontSize + 2 * padding;
-  tCtx.font = fontSize + "px " + fontName;
+  var lines = text.split('\n');
+
+  var lineHeight = (1.25 * fontSize + padding);
+  tCtx.canvas.height = lines.length * lineHeight + padding; // + one extra padding for bottom
+  var maxLineWidth = 0;
+  for (var i = 0; i < lines.length; i++) {
+    tCtx.font = fontSize + "px " + fontName; // Has to be set every time
+    var lineWidth = tCtx.measureText(lines[i]).width + padding * 2;
+    if (lineWidth > maxLineWidth) {
+      maxLineWidth = lineWidth;
+    }
+    tCtx.canvas.width = maxLineWidth;
+  }
   tCtx.fillStyle = "white";
   tCtx.fillRect(0, 0, tCtx.canvas.width, tCtx.canvas.height);
+  tCtx.font = fontSize + "px " + fontName; // Not sure why you have to set the font size again
   tCtx.fillStyle = "black";
-  tCtx.fillText(text, padding, fontSize + padding / 2);
+  for (var i = 0; i < lines.length; i++) {
+    tCtx.fillText(lines[i], padding, fontSize + padding / 2 + i*lineHeight);
+  }
   let img = cv.imread("textCanvas");
   let shape = cv.Mat.zeros(img.cols, img.rows, cv.CV_8UC1);
   cv.cvtColor(img, shape, cv.COLOR_RGBA2GRAY, 0);

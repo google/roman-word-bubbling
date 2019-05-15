@@ -14,7 +14,7 @@
   <main>
     <div class="canvas-container">
       <canvas id="textCanvas" width="400" height="200" hidden="true"></canvas>
-      <canvas id="output"></canvas>
+      <canvas id="output" style="border:1px solid #ff0000;"></canvas>
     </div>
     <div align="right">
       <a class="about" href="about.html">?</a>
@@ -31,15 +31,13 @@
             <div
               class="mdc-text-field mdc-text-field--outlined mdc-text-field--no-label"
             >
-              <input
-                type="text"
+              <textarea
+                rows=2
                 class="mdc-text-field__input"
-                aria-label="Label"
+                aria-label="Text"
                 id="textInput"
-                type="text"
                 name="words"
-                value="bubble"
-              />
+              >bubble</textarea>
               <div class="mdc-notched-outline">
                 <div class="mdc-notched-outline__leading"></div>
                 <div class="mdc-notched-outline__trailing"></div>
