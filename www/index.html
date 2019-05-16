@@ -73,26 +73,29 @@
           </div>
           <div class="input">
             <div class="label slider">Font size</div>
-            <div
-              class="mdc-slider"
-              id="fontSize"
-              tabindex="0"
-              role="slider"
-              aria-valuemin="16"
-              aria-valuemax="300"
-              aria-valuenow="70"
-              aria-label="Select Value"
-              data-value="70"
-            >
-              <div class="mdc-slider__track-container">
-                <div class="mdc-slider__track"></div>
+            <div class="slider-container">
+              <div
+                class="mdc-slider"
+                id="fontSize"
+                tabindex="0"
+                role="slider"
+                aria-valuemin="16"
+                aria-valuemax="300"
+                aria-valuenow="70"
+                aria-label="Select Value"
+                data-value="70"
+              >
+                <div class="mdc-slider__track-container">
+                  <div class="mdc-slider__track"></div>
+                </div>
+                <div class="mdc-slider__thumb-container">
+                  <svg class="mdc-slider__thumb" width="21" height="21">
+                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                  </svg>
+                  <div class="mdc-slider__focus-ring"></div>
+                </div>
               </div>
-              <div class="mdc-slider__thumb-container">
-                <svg class="mdc-slider__thumb" width="21" height="21">
-                  <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                </svg>
-                <div class="mdc-slider__focus-ring"></div>
-              </div>
+              <input class="slider-manual-input" />
             </div>
           </div>
           <div class="input checkbox">
@@ -120,74 +123,95 @@
           </div>
         </div>
         <div class="input-container">
-          <div class="input-container-title label">
-            Outline
-          </div>
           <div class="input">
             <div class="label">Outline color</div>
             <div class="colorOptions">
-              <div class="color selected" style="background-color:#ff0000;color:white"></div>
-              <div class="color" style="background-color:#ff8000;color:white"></div>
-              <div class="color" style="background-color:#ffff00;color:black"></div>
-              <div class="color" style="background-color:#00ff00;color:black"></div>
-              <div class="color" style="background-color:#00ffff;color:black"></div>
-              <div class="color" style="background-color:#0000ff;color:white"></div>
-              <div class="color" style="background-color:#800080;color:white"></div>
+              <div
+                class="color selected"
+                style="background-color:#ff0000;color:white"
+              ></div>
+              <div
+                class="color"
+                style="background-color:#ff8000;color:white"
+              ></div>
+              <div
+                class="color"
+                style="background-color:#ffff00;color:black"
+              ></div>
+              <div
+                class="color"
+                style="background-color:#00ff00;color:black"
+              ></div>
+              <div
+                class="color"
+                style="background-color:#00ffff;color:black"
+              ></div>
+              <div
+                class="color"
+                style="background-color:#0000ff;color:white"
+              ></div>
+              <div
+                class="color"
+                style="background-color:#800080;color:white"
+              ></div>
             </div>
           </div>
           <div class="input">
             <div class="label slider">Outline width</div>
-            <div
-              class="mdc-slider"
-              id="outlineThickness"
-              tabindex="0"
-              role="slider"
-              aria-valuemin="1"
-              aria-valuemax="20"
-              aria-valuenow="9"
-              aria-label="Select Value"
-              data-value="9"
-            >
-              <div class="mdc-slider__track-container">
-                <div class="mdc-slider__track"></div>
+            <div class="slider-container">
+              <div
+                class="mdc-slider"
+                id="outlineThickness"
+                tabindex="0"
+                role="slider"
+                aria-valuemin="1"
+                aria-valuemax="20"
+                aria-valuenow="9"
+                aria-label="Select Value"
+                data-value="9"
+              >
+                <div class="mdc-slider__track-container">
+                  <div class="mdc-slider__track"></div>
+                </div>
+                <div class="mdc-slider__thumb-container">
+                  <svg class="mdc-slider__thumb" width="21" height="21">
+                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                  </svg>
+                  <div class="mdc-slider__focus-ring"></div>
+                </div>
               </div>
-              <div class="mdc-slider__thumb-container">
-                <svg class="mdc-slider__thumb" width="21" height="21">
-                  <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                </svg>
-                <div class="mdc-slider__focus-ring"></div>
-              </div>
+              <input class="slider-manual-input" />
             </div>
           </div>
           <div class="input">
             <div class="label slider">Gap width</div>
-            <div
-              class="mdc-slider"
-              id="gapWidth"
-              tabindex="0"
-              role="slider"
-              aria-valuemin="0"
-              aria-valuemax="50"
-              aria-valuenow="11"
-              aria-label="Select Value"
-              data-value="11"
-            >
-              <div class="mdc-slider__track-container">
-                <div class="mdc-slider__track"></div>
+            <div class="slider-container">
+              <div
+                class="mdc-slider"
+                id="gapWidth"
+                tabindex="0"
+                role="slider"
+                aria-valuemin="0"
+                aria-valuemax="50"
+                aria-valuenow="11"
+                aria-label="Select Value"
+                data-value="11"
+              >
+                <div class="mdc-slider__track-container">
+                  <div class="mdc-slider__track"></div>
+                </div>
+                <div class="mdc-slider__thumb-container">
+                  <svg class="mdc-slider__thumb" width="21" height="21">
+                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                  </svg>
+                  <div class="mdc-slider__focus-ring"></div>
+                </div>
               </div>
-              <div class="mdc-slider__thumb-container">
-                <svg class="mdc-slider__thumb" width="21" height="21">
-                  <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                </svg>
-                <div class="mdc-slider__focus-ring"></div>
-              </div>
+              <input class="slider-manual-input" />
             </div>
           </div>
         </div>
         <div class="input-container">
-          <div class="input-container-title label">
-            Outline
-          </div>
           <div class="input checkbox">
             <div class="mdc-checkbox">
               <input
@@ -219,36 +243,4 @@
   <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
   <script src="third_party/OpenCV/opencv.js" type="text/javascript"></script>
   <script src="js/romanwordbubbling.js" type="text/javascript"></script>
-  <script>
-    const fontSizeElement = document.getElementById("fontSize");
-    const fontSizeSlider = new mdc.slider.MDCSlider(fontSizeElement);
-    fontSizeSlider.listen("MDCSlider:input", () => {
-      fontSizeElement.dataset.value = fontSizeSlider.value;
-      renderImage();
-    });
-    const outlineThicknessElement = document.getElementById("outlineThickness");
-    const outlineThicknessSlider = new mdc.slider.MDCSlider(
-      outlineThicknessElement
-    );
-    outlineThicknessSlider.listen("MDCSlider:input", () => {
-      outlineThicknessElement.dataset.value = outlineThicknessSlider.value;
-      renderImage();
-    });
-    const gapWidthElement = document.getElementById("gapWidth");
-    const gapWidthSlider = new mdc.slider.MDCSlider(gapWidthElement);
-    gapWidthSlider.listen("MDCSlider:input", () => {
-      gapWidthElement.dataset.value = gapWidthSlider.value;
-      renderImage();
-    });
-    const colorOptions = document.querySelectorAll(".color");
-    for (const colorChoice of colorOptions) {
-      colorChoice.addEventListener("click", e => {
-        for (const color of colorOptions) {
-          color.classList.remove("selected");
-        }
-        e.target.classList.add("selected");
-        renderImage();
-      });
-    }
-  </script>
 </body>

@@ -19,8 +19,12 @@ main {
 }
 
 .input-container {
-  padding: 32px 16px;
+  padding: 24px 16px;
   border-bottom: 1px solid #dedede;
+}
+
+.input-container:last-of-type {
+  border-bottom: none;
 }
 
 .input-container-title.label {
@@ -68,6 +72,28 @@ main {
 
 .label.slider {
   margin-bottom: 0;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+}
+
+.slider-manual-input {
+  width: 30px;
+  border-width: 0 0 1px 0;
+  margin-left: 8px;
+  outline: none;
+  text-align: center;
+  padding-bottom: 4px;
+  font-size: 14px;
+  border-color: rgba(0, 0, 0, 0.14);
+  transition: border-color 0.3s;
+}
+
+.slider-manual-input:hover {
+  border-color: rgba(0, 0, 0, 0.87);
+  transition: border-color 0.3s;
 }
 
 .color {
@@ -159,6 +185,21 @@ main {
   bottom: auto;
 }
 
+.mdc-select.mdc-select--outlined .mdc-select__native-control {
+  padding-left: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.28);
+  transition: border 0.3s;
+}
+
+.mdc-select.mdc-select--outlined .mdc-select__native-control:hover {
+  border: 1px solid rgba(0, 0, 0, 0.87);
+  transition: border 0.3s;
+}
+
 .mdc-text-field {
   width: 100%;
+}
+
+.mdc-checkbox {
+  margin: -11px 0;
 }
