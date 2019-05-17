@@ -19,7 +19,7 @@
 var fontName = "'Comic Sans MS'";
 // On desktop (or anything with a wide enough screen) use full name for sample
 // Text needs 744, (?) menu is 66, drawer is 256, 15 for scrollbar
-if (window.innerWidth >= 744+256+66+15) {
+if (window.innerWidth >= 744 + 256 + 66 + 15) {
   document.getElementById("textInput").value = "Roman Word Bubbling";
 }
 document.getElementById("textInput").addEventListener(
@@ -30,6 +30,49 @@ document.getElementById("textInput").addEventListener(
   false
 );
 renderImage();
+
+function initializeSettings() {
+  const sliders = document.querySelectorAll(".slider-container");
+  for (const slider of sliders) {
+    const sliderElement = slider.getElementsByClassName("mdc-slider")[0];
+    const sliderManualInput = slider.getElementsByClassName(
+      "slider-manual-input"
+    )[0];
+    sliderManualInput.value = sliderElement.dataset.value;
+    const mdcSlider = new mdc.slider.MDCSlider(sliderElement);
+    mdcSlider.listen("MDCSlider:input", () => {
+      sliderElement.dataset.value = mdcSlider.value;
+      sliderManualInput.value = Math.floor(mdcSlider.value);
+      renderImage();
+    });
+    sliderManualInput.addEventListener("change", () => {
+      sliderElement.dataset.value = sliderManualInput.value;
+      mdcSlider.value = sliderManualInput.value;
+      renderImage();
+    });
+  }
+
+  const colorOptions = document.querySelectorAll(".color");
+  for (const colorChoice of colorOptions) {
+    colorChoice.addEventListener("click", e => {
+      for (const color of colorOptions) {
+        color.classList.remove("selected");
+      }
+      e.target.classList.add("selected");
+      renderImage();
+    });
+  }
+
+  const drawer = document.getElementsByClassName("mdc-drawer")[0];
+  const close = drawer.getElementsByClassName("close")[0];
+  const edit = document.getElementsByClassName("edit")[0];
+  close.addEventListener("click", () => {
+    drawer.classList.add("collapsed");
+  });
+  edit.addEventListener("click", () => {
+    drawer.classList.remove("collapsed");
+  });
+}
 
 function updateFont() {
   fileButton = document.getElementById("fontFile");
@@ -52,7 +95,10 @@ function updateFont() {
 function getColor() {
   const colorNode = document.getElementsByClassName("selected")[0];
   rgbString = colorNode.style.backgroundColor;
-  return rgbString.substr(4, rgbString.length-5).replace(" ", "").split(",");
+  return rgbString
+    .substr(4, rgbString.length - 5)
+    .replace(" ", "")
+    .split(",");
 }
 
 function loadCustomFont() {
@@ -194,3 +240,6 @@ function renderImage() {
   textImage.delete();
   borderImage.delete();
 }
+
+window.onload = initializeSettings();
+document.onload = document.getElementsByClassName("loader")[0].remove();
