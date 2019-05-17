@@ -11,13 +11,33 @@
   />
 </head>
 <body>
+  <div class="loader">
+    <svg
+      class="spinner"
+      width="65px"
+      height="65px"
+      viewBox="0 0 66 66"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        class="path"
+        fill="none"
+        stroke-width="6"
+        stroke-linecap="round"
+        cx="33"
+        cy="33"
+        r="30"
+      ></circle>
+    </svg>
+  </div>
   <main>
     <div class="canvas-container">
+      <div class="controls" align="right">
+        <a class="about">?</a>
+        <a class="edit">Edit</a>
+      </div>
       <canvas id="textCanvas" width="400" height="200" hidden="true"></canvas>
       <canvas id="output"></canvas>
-    </div>
-    <div align="right">
-      <a class="about" href="about.html">?</a>
     </div>
     <br /><br />
     <aside class="mdc-drawer">
@@ -95,7 +115,7 @@
                   <div class="mdc-slider__focus-ring"></div>
                 </div>
               </div>
-              <input class="slider-manual-input" />
+              <input class="slider-manual-input" type="number" />
             </div>
           </div>
           <div class="input checkbox">
@@ -180,7 +200,7 @@
                   <div class="mdc-slider__focus-ring"></div>
                 </div>
               </div>
-              <input class="slider-manual-input" />
+              <input class="slider-manual-input" type="number" />
             </div>
           </div>
           <div class="input">
@@ -207,7 +227,7 @@
                   <div class="mdc-slider__focus-ring"></div>
                 </div>
               </div>
-              <input class="slider-manual-input" />
+              <input class="slider-manual-input" type="number" />
             </div>
           </div>
         </div>

@@ -42,6 +42,7 @@ function initializeSettings() {
     const mdcSlider = new mdc.slider.MDCSlider(sliderElement);
     mdcSlider.listen("MDCSlider:input", () => {
       sliderElement.dataset.value = mdcSlider.value;
+      sliderManualInput.value = Math.floor(mdcSlider.value);
       renderImage();
     });
     sliderManualInput.addEventListener("change", () => {
@@ -50,6 +51,7 @@ function initializeSettings() {
       renderImage();
     });
   }
+
   const colorOptions = document.querySelectorAll(".color");
   for (const colorChoice of colorOptions) {
     colorChoice.addEventListener("click", e => {
@@ -60,6 +62,16 @@ function initializeSettings() {
       renderImage();
     });
   }
+
+  const drawer = document.getElementsByClassName("mdc-drawer")[0];
+  const close = drawer.getElementsByClassName("close")[0];
+  const edit = document.getElementsByClassName("edit")[0];
+  close.addEventListener("click", () => {
+    drawer.classList.add("collapsed");
+  });
+  edit.addEventListener("click", () => {
+    drawer.classList.remove("collapsed");
+  });
 }
 
 function updateFont() {
@@ -230,3 +242,4 @@ function renderImage() {
 }
 
 window.onload = initializeSettings();
+document.onload = document.getElementsByClassName("loader")[0].remove();

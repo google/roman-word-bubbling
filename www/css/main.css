@@ -18,6 +18,35 @@ main {
   cursor: pointer;
 }
 
+.collapsed {
+  transition: margin-right 0.3s;
+  margin-right: -256px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 24;
+  top: 0;
+}
+
+.edit {
+  color: #999;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: 1px solid #999;
+  display: block;
+  height: 30px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 .input-container {
   padding: 24px 16px;
   border-bottom: 1px solid #dedede;
@@ -42,6 +71,7 @@ main {
   justify-content: center;
   align-items: center;
   width: calc(100vw - 256px - 66px);
+  position: relative;
 }
 
 .input {
@@ -80,6 +110,7 @@ main {
 }
 
 .slider-manual-input {
+  font-family: "Roboto", sans-serif;
   width: 30px;
   border-width: 0 0 1px 0;
   margin-left: 8px;
@@ -132,10 +163,66 @@ main {
   color: #616161;
   font-weight: bold;
   margin: 20px 24px;
+  cursor: pointer;
 }
 
 .hidden {
   display: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Loader styles */
+
+.loader {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(256, 256, 256, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  animation: rotator 1.4s linear infinite;
+}
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 90;
+  transform-origin: center;
+  stroke: #4285f4;
+  animation: dash 1.4s ease-in-out infinite;
+}
+@keyframes dash {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(135deg);
+  }
+  100% {
+    transform: rotate(450deg);
+  }
 }
 
 /* MDC Overrides */
@@ -144,6 +231,7 @@ main {
   height: 100%;
   min-height: 100vh;
   border-left: 1px solid #dedede;
+  transition: margin-right 0.3s;
 }
 
 .mdc-drawer__header {
