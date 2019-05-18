@@ -68,9 +68,11 @@ function initializeSettings() {
   const edit = document.getElementsByClassName("edit")[0];
   close.addEventListener("click", () => {
     drawer.classList.add("collapsed");
+    edit.style.display = "";
   });
   edit.addEventListener("click", () => {
     drawer.classList.remove("collapsed");
+    edit.style.display = "none"
   });
 }
 
