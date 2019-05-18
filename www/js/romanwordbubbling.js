@@ -67,11 +67,11 @@ function initializeSettings() {
   const close = drawer.getElementsByClassName("close")[0];
   const edit = document.getElementsByClassName("edit")[0];
   close.addEventListener("click", () => {
-    drawer.classList.add("collapsed");
+    drawer.style.width = 0;
     edit.style.display = "";
   });
   edit.addEventListener("click", () => {
-    drawer.classList.remove("collapsed");
+    drawer.style.width = 256;
     edit.style.display = "none"
   });
 }
