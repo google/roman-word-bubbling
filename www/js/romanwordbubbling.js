@@ -32,6 +32,31 @@ document.getElementById("textInput").addEventListener(
 renderImage();
 
 function initializeSettings() {
+  const mobile = window.outerWidth < 500 ? true : false;
+
+  // dialogs
+  const infoDialog = new mdc.dialog.MDCDialog(
+    document.getElementById("info-dialog")
+  );
+  document.getElementsByClassName("info")[0].addEventListener("click", () => {
+    infoDialog.open();
+  });
+  const aboutDialog = new mdc.dialog.MDCDialog(
+    document.getElementById("about-dialog")
+  );
+  document.getElementsByClassName("about")[0].addEventListener("click", () => {
+    aboutDialog.open();
+  });
+  const feedbackDialog = new mdc.dialog.MDCDialog(
+    document.getElementById("feedback-dialog")
+  );
+  document
+    .getElementsByClassName("feedback")[0]
+    .addEventListener("click", () => {
+      feedbackDialog.open();
+    });
+
+  //sliders
   const sliders = document.querySelectorAll(".slider-container");
   for (const slider of sliders) {
     const sliderElement = slider.getElementsByClassName("mdc-slider")[0];
@@ -52,6 +77,7 @@ function initializeSettings() {
     });
   }
 
+  // colors
   const colorOptions = document.querySelectorAll(".color");
   for (const colorChoice of colorOptions) {
     colorChoice.addEventListener("click", e => {
@@ -63,16 +89,17 @@ function initializeSettings() {
     });
   }
 
+  // drawer controls
   const drawer = document.getElementsByClassName("mdc-drawer")[0];
   const close = drawer.getElementsByClassName("close")[0];
   const edit = document.getElementsByClassName("edit")[0];
   close.addEventListener("click", () => {
-    drawer.style.width = 0;
-    edit.style.display = "";
+    drawer.style.marginRight = mobile ? "-512px" : "-256px";
+    edit.style.marginRight = "0";
   });
   edit.addEventListener("click", () => {
-    drawer.style.width = 256;
-    edit.style.display = "none"
+    drawer.style.marginRight = "0";
+    edit.style.marginRight = "-110px";
   });
 }
 

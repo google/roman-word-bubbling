@@ -3,10 +3,24 @@
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 main {
   display: flex;
+}
+
+@media screen and (max-device-width: 500px) {
+  .mdc-drawer {
+    transform-origin: top right;
+    transform: scale(2);
+  }
+
+  .controls {
+    transform: scale(2);
+  }
 }
 
 /* Main Styles */
@@ -40,6 +54,8 @@ main {
   justify-content: center;
   border-radius: 6px;
   cursor: pointer;
+  margin-right: -110px;
+  transition: margin-right 0.3s;
 }
 
 .input-container {
@@ -143,6 +159,7 @@ main {
   display: flex;
 }
 
+.info,
 .about {
   border-radius: 50%;
   height: 15px;
@@ -157,8 +174,14 @@ main {
   border: 1.5px solid #616161;
   color: #616161;
   font-weight: bold;
-  margin: 20px 24px;
+  margin: 20px 24px 20px 0;
   cursor: pointer;
+}
+
+.feedback {
+  cursor: pointer;
+  margin: 20px 24px 20px 0;
+  fill: #616161;
 }
 
 .hidden {
@@ -285,4 +308,24 @@ input[type="number"] {
 
 .mdc-checkbox {
   margin: -11px 0;
+}
+
+.mdc-dialog .mdc-dialog__title {
+  display: flex;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-size: 16px;
+  padding: 24px 24px 8px 24px;
+}
+
+.mdc-dialog img {
+  height: 50px;
+  width: 50px;
+  padding: 24px 24px 0 24px;
+}
+
+.mdc-dialog__content {
+  font-size: 14px;
+  color: #575757;
+  line-height: 1.5;
 }

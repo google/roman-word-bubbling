@@ -1,8 +1,8 @@
 <head>
   <title>Roman Word Bubbling</title>
-  <meta charset="UTF-8">
-  <meta name="google" content="notranslate">
-  <meta http-equiv="Content-Language" content="en">
+  <meta charset="UTF-8" />
+  <meta name="google" content="notranslate" />
+  <meta http-equiv="Content-Language" content="en" />
   <link
     rel="stylesheet"
     href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
@@ -12,15 +12,20 @@
     href="https://fonts.googleapis.com/css?family=Roboto"
     rel="stylesheet"
   />
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140382909-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-140382909-1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-  gtag('config', 'UA-140382909-1');
-</script>
+    gtag("config", "UA-140382909-1");
+  </script>
 </head>
 <body>
   <div class="loader">
@@ -42,11 +47,105 @@
       ></circle>
     </svg>
   </div>
+  <div
+    class="mdc-dialog"
+    id="info-dialog"
+    role="alertdialog"
+    aria-modal="true"
+    aria-labelledby="my-dialog-title"
+    aria-describedby="my-dialog-content"
+  >
+    <div class="mdc-dialog__container">
+      <div class="mdc-dialog__surface">
+        <img src="img/logo.png" />
+        <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+        <h2 class="mdc-dialog__title" id="my-dialog-title">
+          <!--
+     -->Roman Word Bubbling Tool<!--
+   -->
+        </h2>
+        <div class="mdc-dialog__content" id="my-dialog-content">
+          <p>
+            This tool is designed to assist in literacy education for the
+            students with CVI. It is being developed under the guidance of Dr.
+            Christine Roman-Lantzy who iriginally developed the technique.
+          </p>
+          <p>
+            Disclaimer: This is not an official Google Product.
+          </p>
+          <p>
+            Version 0.7.0.
+          </p>
+          <p>(Open source license and other: TBD)</p>
+        </div>
+      </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+  </div>
+  <div
+    class="mdc-dialog"
+    id="about-dialog"
+    role="alertdialog"
+    aria-modal="true"
+    aria-labelledby="my-dialog-title"
+    aria-describedby="my-dialog-content"
+  >
+    <div class="mdc-dialog__container">
+      <div class="mdc-dialog__surface">
+        <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+        <h2 class="mdc-dialog__title" id="my-dialog-title">
+          <!--
+     -->Dialog Title<!--
+   -->
+        </h2>
+        <div class="mdc-dialog__content" id="my-dialog-content">
+          Dialog body text goes here.
+        </div>
+      </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+  </div>
+  <div
+    class="mdc-dialog"
+    id="feedback-dialog"
+    role="alertdialog"
+    aria-modal="true"
+    aria-labelledby="my-dialog-title"
+    aria-describedby="my-dialog-content"
+  >
+    <div class="mdc-dialog__container">
+      <div class="mdc-dialog__surface">
+        <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+        <h2 class="mdc-dialog__title" id="my-dialog-title">
+          <!--
+     -->Dialog Title<!--
+   -->
+        </h2>
+        <div class="mdc-dialog__content" id="my-dialog-content">
+          Dialog body text goes here.
+        </div>
+      </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+  </div>
   <main>
     <div class="canvas-container">
       <div class="controls" align="right">
+        <a class="info">i</a>
         <a class="about">?</a>
-        <a class="edit" style="display:none">Edit</a>
+        <a class="feedback"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"
+            /></svg
+        ></a>
+        <a class="edit">Edit</a>
       </div>
       <canvas id="textCanvas" width="400" height="200" hidden="true"></canvas>
       <canvas id="output"></canvas>
