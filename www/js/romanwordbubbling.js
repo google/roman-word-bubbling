@@ -41,11 +41,11 @@ function initializeSettings() {
   document.getElementsByClassName("info")[0].addEventListener("click", () => {
     infoDialog.open();
   });
-  const aboutDialog = new mdc.dialog.MDCDialog(
-    document.getElementById("about-dialog")
+  const helpDialog = new mdc.dialog.MDCDialog(
+    document.getElementById("help-dialog")
   );
-  document.getElementsByClassName("about")[0].addEventListener("click", () => {
-    aboutDialog.open();
+  document.getElementsByClassName("help")[0].addEventListener("click", () => {
+    helpDialog.open();
   });
   const feedbackDialog = new mdc.dialog.MDCDialog(
     document.getElementById("feedback-dialog")
