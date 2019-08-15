@@ -270,5 +270,17 @@ function renderImage() {
   borderImage.delete();
 }
 
+function submitFeedback() {
+  data = {
+    'title':document.getElementById("feedbackTitle").value,
+    'description':document.getElementById("feedbackDescription").value
+  };
+  var req = new XMLHttpRequest();
+  req.open("POST", "/dG9tbXltYWx2ZWVrYXJ3Yg.html", true);
+  req.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  console.log("Submitting Feedback %s", JSON.stringify(data));
+  req.send(JSON.stringify(data));
+}
+
 window.onload = initializeSettings();
 document.onload = document.getElementsByClassName("loader")[0].remove();

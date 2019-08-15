@@ -14,26 +14,24 @@
     limitations under the License.from PIL import Image
 """
 
-from flask import Flask, request, send_file
+from flask import Flask, request
 from io import BytesIO
+from google.appengine.api import mail
 
 app = Flask(__name__)
 
-
-@app.route('/dG9tbXltYWx2ZWVrYXJ3Yg', methods=['GET', 'POST'])
-def flip_word():
-  # TODO: This should actually run the opencv code to do the bubbling. Figure
-  # out how to get this into App Engine (get numpy working and get OpenCV .so
-  # files small enough to be under App Engine's limit)
-  img = Image.open(BytesIO(request.data))
-  img = img.rotate(180)
-  output = BytesIO()
-  img.save(output, 'png')
-  output.seek(0)
-
-  return send_file(output,
-                   attachment_filename='bubbled.png',
-                   mimetype='image/png')
+@app.route('/dG9tbXltYWx2ZWVrYXJ3Yg.html', methods=['GET', 'POST'])
+def send_feedback():
+  if request.method == "POST":
+    data = request.get_json()
+    message = mail.EmailMessage(sender="romanwordbubbling@gmail.com",
+                   to="romanwordbubbling@gmail.com",
+                   subject=data['title'],
+                   body=data['description'])
+    message.send()
+    return """<html><body>Feedback received</body></html>"""
+  else:
+    return """<html><body>Unknown error occurred</body></html>"""  
 
 if __name__ == '__main__':
   # This is used when running locally only. When deploying to Google App

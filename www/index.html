@@ -122,11 +122,13 @@
         <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
         <h2 class="mdc-dialog__title" id="my-dialog-title">
           <!--
-     -->Dialog Title<!--
+     -->Send Feedback<!--
    -->
         </h2>
         <div class="mdc-dialog__content" id="my-dialog-content">
-          Dialog body text goes here.
+          <br>Title: <input type="text" id="feedbackTitle"/>
+          <br>Desctiption: <textarea id="feedbackDescription"></textarea>
+          <br><input type="button" id="feedbackSubmit" value="Submit" onclick="submitFeedback()"/>
         </div>
       </div>
     </div>

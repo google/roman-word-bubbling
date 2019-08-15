@@ -17,6 +17,9 @@ threadsafe: true
 
 handlers:
 
+- url: /dG9tbXltYWx2ZWVrYXJ3Yg.html
+  script: main.app
+
 - url: /
   static_files: www/index.html
   upload: www/index.html
@@ -36,9 +39,6 @@ handlers:
 - url: /bWFsdmVla2F0b21teWh0bWw/(.*)
   static_files: www/bWFsdmVla2F0b21teWh0bWw/(.*)
   upload: www/bWFsdmVla2F0b21teWh0bWw/(.*)
-
-- url: /webservice/.*
-  script: main.app
 
 libraries:
   - name: PIL
