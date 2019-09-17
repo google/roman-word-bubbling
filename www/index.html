@@ -8,10 +8,12 @@
     href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
   />
   <Link rel="stylesheet" href="css/main.css" />
+  <link rel="manifest" href="site.webmanifest" />
   <link
     href="https://fonts.googleapis.com/css?family=Roboto"
     rel="stylesheet"
   />
+  <link rel="icon" type="image/png" href="favicon.ico" />
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script
     async
@@ -66,9 +68,9 @@
         </h2>
         <div class="mdc-dialog__content" id="my-dialog-content">
           <p>
-            This tool is designed to assist in literacy education for
-            students with CVI. It is being developed in cooperation with Dr.
-            Christine Roman-Lantzy who originally developed the technique.
+            This tool is designed to assist in literacy education for students
+            with CVI. It is being developed in cooperation with Dr. Christine
+            Roman-Lantzy who originally developed the technique.
           </p>
           <p>
             Disclaimer: This is not an official Google Product.
@@ -78,8 +80,10 @@
           </p>
           <p>
             This application uses the following open source projects:
-            <br><a href="https://opencv.org">OpenCV</a> 
-            (<a href="third_party/OpenCV/LICENSE">License</a>)
+            <br /><a href="https://opencv.org">OpenCV</a> (<a
+              href="third_party/OpenCV/LICENSE"
+              >License</a
+            >)
           </p>
         </div>
       </div>
@@ -126,9 +130,14 @@
    -->
         </h2>
         <div class="mdc-dialog__content" id="my-dialog-content">
-          <br>Title: <input type="text" id="feedbackTitle"/>
-          <br>Desctiption: <textarea id="feedbackDescription"></textarea>
-          <br><input type="button" id="feedbackSubmit" value="Submit" onclick="submitFeedback()"/>
+          <br />Title: <input type="text" id="feedbackTitle" />
+          <br />Desctiption: <textarea id="feedbackDescription"></textarea>
+          <br /><input
+            type="button"
+            id="feedbackSubmit"
+            value="Submit"
+            onclick="submitFeedback()"
+          />
         </div>
       </div>
     </div>
