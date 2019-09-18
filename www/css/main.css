@@ -40,6 +40,13 @@ main {
   top: 0;
 }
 
+.controls div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .edit {
   color: #999;
   font-weight: 600;
@@ -186,6 +193,40 @@ main {
 
 .hidden {
   display: none;
+}
+
+.tooltip {
+  position: absolute;
+  left: -14px;
+  bottom: -16px;
+  display: flex;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.87);
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.tooltip:before {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 5px solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.87) transparent;
+  top: -10px;
+  justify-self: center;
+}
+
+.feedback + .tooltip {
+  left: -26px;
+}
+
+.controls div:hover .tooltip {
+  opacity: 1;
 }
 
 input[type="number"]::-webkit-outer-spin-button,

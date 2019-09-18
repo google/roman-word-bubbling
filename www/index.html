@@ -146,20 +146,22 @@
   <main>
     <div class="canvas-container">
       <div class="controls" align="right">
-        <a class="info">i</a>
-        <a class="help">?</a>
-        <a class="feedback"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path
-              d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"
-            /></svg
-        ></a>
+        <div><a class="info">i</a><span class="tooltip">Info</span></div>
+        <div><a class="help">?</a><span class="tooltip">Help</span></div>
+        <div>
+          <a class="feedback"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"
+              /></svg></a
+          ><span class="tooltip">Feedback</span>
+        </div>
         <a class="edit">Edit</a>
       </div>
       <canvas id="textCanvas" width="400" height="200" hidden="true"></canvas>
