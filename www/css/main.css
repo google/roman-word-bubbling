@@ -225,7 +225,7 @@ main {
   left: -26px;
 }
 
-.controls div:hover .tooltip {
+.controls a:hover + .tooltip {
   opacity: 1;
 }
 
