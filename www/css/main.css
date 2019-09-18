@@ -240,6 +240,26 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+#my-dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#feedbackSubmit {
+  background: none;
+  border: none;
+  color: #4285f4;
+  text-transform: uppercase;
+  padding: 0;
+  justify-self: flex-end;
+  cursor: pointer;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  width: 50px;
+  align-self: flex-end;
+}
+
 /* Loader styles */
 
 .loader {
