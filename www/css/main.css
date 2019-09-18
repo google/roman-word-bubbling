@@ -209,6 +209,7 @@ main {
   font-size: 12px;
   pointer-events: none;
   opacity: 0;
+  z-index: 10;
 }
 
 .tooltip:before {
