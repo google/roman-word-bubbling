@@ -31,6 +31,8 @@ document.getElementById("textInput").addEventListener(
 );
 renderImage();
 
+let feedbackDialogue;
+
 function initializeSettings() {
   const mobile = window.outerWidth < 500 ? true : false;
 
@@ -47,7 +49,7 @@ function initializeSettings() {
   document.getElementsByClassName("help")[0].addEventListener("click", () => {
     helpDialog.open();
   });
-  const feedbackDialog = new mdc.dialog.MDCDialog(
+  feedbackDialog = new mdc.dialog.MDCDialog(
     document.getElementById("feedback-dialog")
   );
   document
@@ -272,12 +274,13 @@ function renderImage() {
 
 function submitFeedback() {
   data = {
-    'title':document.getElementById("feedbackTitle").value,
-    'description':document.getElementById("feedbackDescription").value
+    title: document.getElementById("feedbackTitle").value,
+    description: document.getElementById("feedbackDescription").value
   };
+  feedbackDialog.close();
   var req = new XMLHttpRequest();
   req.open("POST", "/dG9tbXltYWx2ZWVrYXJ3Yg.html", true);
-  req.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  req.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
   console.log("Submitting Feedback %s", JSON.stringify(data));
   req.send(JSON.stringify(data));
 }

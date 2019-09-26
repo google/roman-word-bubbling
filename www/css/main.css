@@ -1,5 +1,10 @@
 /* Reset */
 
+html,
+main {
+  height: 100%;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -342,6 +347,20 @@ input[type="number"] {
   align-items: center;
   font-size: 16px;
   font-weight: bold;
+}
+
+.mdc-drawer__content {
+  height: auto;
+}
+
+.mdc-drawer__content::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+.mdc-drawer__content::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 .mdc-text-field.mdc-text-field--outlined.mdc-text-field--no-label {
