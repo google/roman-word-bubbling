@@ -126,6 +126,18 @@ main {
 .label.slider {
   margin-bottom: 0;
 }
+.font_preload_hack_for_browsers_that_do_not_support_rel_preload {
+  font-family: "apompadour_custom", sans-serif;
+  font-size: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .slider-container {
   display: flex;

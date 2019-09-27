@@ -9,6 +9,7 @@
   />
   <Link rel="stylesheet" href="css/main.css" />
   <Link rel="stylesheet" href="css/stylesheet_apompadour.css?family=apompadour_custom" />
+  <link rel="preload" href="webfonts/apompadour_custom/apompadour_custom-webfont.woff2" as="font">
   <link rel="manifest" href="site.webmanifest" />
   <link
     href="https://fonts.googleapis.com/css?family=Roboto"
@@ -168,6 +169,9 @@
         </div>
         <a class="edit">Edit</a>
       </div>
+      <span id="loadingBackground" class="font_preload_hack_for_browsers_that_do_not_support_rel_preload">
+            Roman Word Bubbling
+      </span>
       <canvas id="textCanvas" width="400" height="200" hidden="true"></canvas>
       <canvas id="output"></canvas>
     </div>
@@ -207,11 +211,10 @@
                 id="fontChooser"
                 onchange="updateFont()"
               >
-                <option value="'Comic Sans MS'">Comic Sans</option>
-                <option value="Helvetica">Helvetica</option>
-                <option value="'Trebuchet MS'">Trebuchet</option>
                 <option value="apompadour_custom">A Pompadour</option>
                 <option value="Roboto">Roboto</option>
+                <option value="'Trebuchet MS'">Trebuchet</option>
+                <option value="'Comic Sans MS'">Comic Sans</option>
                 <option value="custom">Custom...</option>
               </select>
               <div class="mdc-notched-outline"></div>

@@ -16,7 +16,7 @@
  *
  */
 
-var fontName = "'Comic Sans MS'";
+var fontName = "apompadour_custom";
 // On desktop (or anything with a wide enough screen) use full name for sample
 // Text needs 744, (?) menu is 66, drawer is 256, 15 for scrollbar
 if (window.innerWidth >= 744 + 256 + 66 + 15) {
@@ -29,7 +29,6 @@ document.getElementById("textInput").addEventListener(
   },
   false
 );
-renderImage();
 
 let feedbackDialogue;
 
@@ -285,5 +284,11 @@ function submitFeedback() {
   req.send(JSON.stringify(data));
 }
 
+function finalize() {
+  document.getElementsByClassName("loader")[0].remove();
+  document.getElementById("loadingBackground").remove();
+  renderImage();
+}
+
 window.onload = initializeSettings();
-document.onload = document.getElementsByClassName("loader")[0].remove();
+document.onload = finalize();
