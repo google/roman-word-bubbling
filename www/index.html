@@ -105,11 +105,17 @@
         <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
         <h2 class="mdc-dialog__title" id="my-dialog-title">
           <!--
-     -->Quick help<!--
+     -->Help<!--
    -->
         </h2>
         <div class="mdc-dialog__content" id="my-dialog-content">
-          Dialog body text goes here.
+          <p>This tool is intended to reduce visual complexity by emphasising the shape of 
+          the entire word instead of individual letters. Type words in the Text field and 
+          the tool will draw a tight, brightly-colored bubble around it.</p>
+          
+          <p>The defaults were carefully chosen to work for most students. If your student attunes
+          to a different color or font, you can change those in the Edit window. If anything
+          is not working well or you have suggestions, click the feedback button and let us know.</p>
         </div>
       </div>
     </div>
@@ -132,10 +138,10 @@
    -->
         </h2>
         <div class="mdc-dialog__content" id="my-dialog-content">
-          <br /><input type="text" id="feedbackTitle" placeholder="Title" />
+          <br /><input type="text" id="feedbackTitle" placeholder="Title (optional)" />
           <br /><textarea
             id="feedbackDescription"
-            placeholder="Description"
+            placeholder="Description. If this is a bug report, please include as much information as possible."
           ></textarea>
           <br /><input
             type="button"
