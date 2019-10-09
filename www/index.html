@@ -105,7 +105,7 @@
         <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
         <h2 class="mdc-dialog__title" id="my-dialog-title">
           <!--
-     -->Dialog Title<!--
+     -->Quick help<!--
    -->
         </h2>
         <div class="mdc-dialog__content" id="my-dialog-content">
@@ -312,6 +312,31 @@
               ></div>
             </div>
           </div>
+          <div class="input checkbox">
+            <div class="mdc-checkbox">
+              <input
+                type="checkbox"
+                class="mdc-checkbox__native-control"
+                id="darkMode"
+                type="checkbox"
+                name="dark mode"
+                onclick="renderImage()"
+              />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path
+                    class="mdc-checkbox__checkmark-path"
+                    fill="none"
+                    d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                  />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <div class="label">Dark background</div>
+          </div>
+        </div>
+        <div class="input-container">
           <div class="input">
             <div class="label slider">Outline width</div>
             <div class="slider-container">
@@ -365,31 +390,6 @@
               </div>
               <input class="slider-manual-input" type="number" />
             </div>
-          </div>
-        </div>
-        <div class="input-container">
-          <div class="input checkbox">
-            <div class="mdc-checkbox">
-              <input
-                type="checkbox"
-                class="mdc-checkbox__native-control"
-                id="darkMode"
-                type="checkbox"
-                name="dark mode"
-                onclick="renderImage()"
-              />
-              <div class="mdc-checkbox__background">
-                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                  <path
-                    class="mdc-checkbox__checkmark-path"
-                    fill="none"
-                    d="M1.73,12.91 8.1,19.28 22.79,4.59"
-                  />
-                </svg>
-                <div class="mdc-checkbox__mixedmark"></div>
-              </div>
-            </div>
-            <div class="label">Dark background</div>
           </div>
         </div>
       </div>
