@@ -261,7 +261,9 @@ function renderImage() {
     cv.bitwise_not(borderImage, borderImage);
   }
 
-  cv.imshow("output", borderImage);
+  cv.imshow("textCanvas", borderImage);
+  outputImage = document.getElementById("output");
+  outputImage.src = document.getElementById("textCanvas").toDataURL();
   img.delete();
   shape.delete();
   contours.delete();
