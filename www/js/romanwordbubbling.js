@@ -276,6 +276,7 @@ function submitFeedback() {
   const description = document.getElementById("feedbackDescription").value;
   data = {
     title: document.getElementById("feedbackTitle").value,
+    email: document.getElementById("feedbackEmail").value,
     description
   };
   console.log(description);

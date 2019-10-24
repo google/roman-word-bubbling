@@ -17,16 +17,7 @@ main {
   display: flex;
 }
 
-/* @media screen and (max-device-width: 500px) {
-  .mdc-drawer {
-    transform-origin: top right;
-    transform: scale(2);
-  }
-
-  .controls {
-    transform: scale(2);
-  }
-} */
+/*  git st */
 
 /* Main Styles */
 
@@ -293,6 +284,7 @@ input[type="number"] {
 }
 
 #feedbackTitle,
+#feedbackEmail,
 #feedbackDescription {
   outline: none;
   border: none;
