@@ -272,16 +272,34 @@ function renderImage() {
 }
 
 function submitFeedback() {
+  const description = document.getElementById("feedbackDescription").value;
   data = {
     title: document.getElementById("feedbackTitle").value,
-    description: document.getElementById("feedbackDescription").value
+    description
   };
-  feedbackDialog.close();
-  var req = new XMLHttpRequest();
-  req.open("POST", "/dG9tbXltYWx2ZWVrYXJ3Yg.html", true);
-  req.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-  console.log("Submitting Feedback %s", JSON.stringify(data));
-  req.send(JSON.stringify(data));
+  console.log(description);
+  if (description) {
+    feedbackDialog.close();
+    const snackbar = document.getElementsByClassName("feedback-snackbar")[0];
+    snackbar.style.bottom = 10;
+    document
+      .getElementsByClassName("feedback-snackbar-close")[0]
+      .addEventListener("click", () => {
+        snackbar.style.bottom = -100;
+      });
+    setTimeout(() => {
+      snackbar.style.bottom = -100;
+    }, 5000);
+    var req = new XMLHttpRequest();
+    req.open("POST", "/dG9tbXltYWx2ZWVrYXJ3Yg.html", true);
+    req.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    console.log("Submitting Feedback %s", JSON.stringify(data));
+    req.send(JSON.stringify(data));
+  } else {
+    document
+      .getElementsByClassName("feedback-error")[0]
+      .classList.remove("hidden");
+  }
 }
 
 function finalize() {

@@ -205,6 +205,35 @@ main {
   fill: #616161;
 }
 
+.feedback-error {
+  color: red;
+  margin: -2px 0 -14px 24px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.feedback-snackbar {
+  position: fixed;
+  left: 50%;
+  bottom: -100px;
+  transform: translateX(-50%);
+  transition: all 0.3s;
+  background: #333;
+  color: white;
+  font-size: 14px;
+  padding: 16px;
+  width: 300px;
+  z-index: 9999999;
+  display: flex;
+  justify-content: space-between;
+}
+
+.feedback-snackbar-close {
+  color: #448aff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .hidden {
   display: none;
 }

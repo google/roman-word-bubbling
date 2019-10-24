@@ -8,8 +8,15 @@
     href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
   />
   <Link rel="stylesheet" href="css/main.css" />
-  <Link rel="stylesheet" href="css/stylesheet_apompadour.css?family=apompadour_custom" />
-  <link rel="preload" href="webfonts/apompadour_custom/apompadour_custom-webfont.woff2" as="font">
+  <Link
+    rel="stylesheet"
+    href="css/stylesheet_apompadour.css?family=apompadour_custom"
+  />
+  <link
+    rel="preload"
+    href="webfonts/apompadour_custom/apompadour_custom-webfont.woff2"
+    as="font"
+  />
   <link rel="manifest" href="site.webmanifest" />
   <link
     href="https://fonts.googleapis.com/css?family=Roboto"
@@ -109,13 +116,19 @@
    -->
         </h2>
         <div class="mdc-dialog__content" id="my-dialog-content">
-          <p>This tool is intended to reduce visual complexity by emphasising the shape of 
-          the entire word instead of individual letters. Type words in the Text field and 
-          the tool will draw a tight, brightly-colored bubble around it.</p>
-          
-          <p>The defaults were carefully chosen to work for most students. If your student attunes
-          to a different color or font, you can change those in the Edit window. If anything
-          is not working well or you have suggestions, click the feedback button and let us know.</p>
+          <p>
+            This tool is intended to reduce visual complexity by emphasising the
+            shape of the entire word instead of individual letters. Type words
+            in the Text field and the tool will draw a tight, brightly-colored
+            bubble around it.
+          </p>
+
+          <p>
+            The defaults were carefully chosen to work for most students. If
+            your student attunes to a different color or font, you can change
+            those in the Edit window. If anything is not working well or you
+            have suggestions, click the feedback button and let us know.
+          </p>
         </div>
       </div>
     </div>
@@ -137,8 +150,13 @@
      -->Send Feedback<!--
    -->
         </h2>
+        <div class="feedback-error hidden">Dialogue cannot be left empty.</div>
         <div class="mdc-dialog__content" id="my-dialog-content">
-          <br /><input type="text" id="feedbackTitle" placeholder="Title (optional)" />
+          <br /><input
+            type="text"
+            id="feedbackTitle"
+            placeholder="Title (optional)"
+          />
           <br /><textarea
             id="feedbackDescription"
             placeholder="Description. If this is a bug report, please include as much information as possible."
@@ -153,6 +171,10 @@
       </div>
     </div>
     <div class="mdc-dialog__scrim"></div>
+  </div>
+  <div class="feedback-snackbar">
+    <span>Feedback sent successfully.</span
+    ><span class="feedback-snackbar-close">DISMISS</span>
   </div>
   <main>
     <div class="canvas-container">
@@ -175,9 +197,12 @@
         </div>
         <a class="edit">Edit</a>
       </div>
-      <span id="loadingBackground" class="font_preload_hack_for_browsers_that_do_not_support_rel_preload">
-          This page may take a minute or two to load. <br>
-          If it fails to load, email romanwordbubbling (at gmail.com)
+      <span
+        id="loadingBackground"
+        class="font_preload_hack_for_browsers_that_do_not_support_rel_preload"
+      >
+        This page may take a minute or two to load. <br />
+        If it fails to load, email romanwordbubbling (at gmail.com)
       </span>
       <canvas id="textCanvas" width="400" height="200" hidden="true"></canvas>
       <canvas id="output"></canvas>
