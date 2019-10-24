@@ -17,7 +17,7 @@ main {
   display: flex;
 }
 
-@media screen and (max-device-width: 500px) {
+/* @media screen and (max-device-width: 500px) {
   .mdc-drawer {
     transform-origin: top right;
     transform: scale(2);
@@ -26,7 +26,7 @@ main {
   .controls {
     transform: scale(2);
   }
-}
+} */
 
 /* Main Styles */
 
@@ -41,8 +41,13 @@ main {
   display: flex;
   align-items: center;
   position: absolute;
-  right: 24;
+  right: 280px;
   top: 0;
+  transition: all 0.3s;
+}
+
+.controls.collapsed {
+  right: 135px;
 }
 
 .controls div {
@@ -94,7 +99,6 @@ main {
   justify-content: center;
   align-items: center;
   width: calc(100vw - 256px - 66px);
-  position: relative;
 }
 
 .input {
@@ -374,7 +378,11 @@ input[type="number"] {
   height: 100%;
   min-height: 100vh;
   border-left: 1px solid #dedede;
-  transition: margin-right 0.3s;
+  transition: all 0.3s;
+}
+
+.mdc-drawer.collapsed {
+  transform: translateX(100%);
 }
 
 .mdc-drawer__header {

@@ -92,15 +92,16 @@ function initializeSettings() {
 
   // drawer controls
   const drawer = document.getElementsByClassName("mdc-drawer")[0];
+  const controls = document.getElementsByClassName("controls")[0];
   const close = drawer.getElementsByClassName("close")[0];
   const edit = document.getElementsByClassName("edit")[0];
   close.addEventListener("click", () => {
-    drawer.style.marginRight = mobile ? "-512px" : "-256px";
-    edit.style.marginRight = "0";
+    drawer.classList.add("collapsed");
+    controls.classList.add("collapsed");
   });
   edit.addEventListener("click", () => {
-    drawer.style.marginRight = "0";
-    edit.style.marginRight = "-110px";
+    drawer.classList.remove("collapsed");
+    controls.classList.remove("collapsed");
   });
 }
 
