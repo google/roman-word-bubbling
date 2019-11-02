@@ -91,7 +91,7 @@ function initializeSettings() {
   }
 
   // drawer controls
-  const drawer = document.getElementsByClassName("mdc-drawer")[0];
+  const drawer = document.getElementsByClassName("mdc-drawer__container")[0];
   const controls = document.getElementsByClassName("controls")[0];
   const close = drawer.getElementsByClassName("close")[0];
   const edit = document.getElementsByClassName("edit")[0];

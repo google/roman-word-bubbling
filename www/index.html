@@ -213,224 +213,226 @@
       <canvas id="output"></canvas>
     </div>
     <br /><br />
-    <aside class="mdc-drawer" style="transition:.3s">
-      <div class="mdc-drawer__header">
-        <span>Edit</span><span class="close">&times;</span>
-      </div>
-      <div class="mdc-drawer__content">
-        <div class="input-container">
-          <div class="input">
-            <div class="label">Text</div>
-            <div
-              class="mdc-text-field mdc-text-field--outlined mdc-text-field--no-label"
-            >
-              <input
-                type="text"
-                class="mdc-text-field__input"
-                aria-label="Label"
-                id="textInput"
-                type="text"
-                name="words"
-                value="bubble"
-              />
-              <div class="mdc-notched-outline">
-                <div class="mdc-notched-outline__leading"></div>
-                <div class="mdc-notched-outline__trailing"></div>
-              </div>
-            </div>
-          </div>
-          <div class="input">
-            <div class="label">Font</div>
-            <div class="mdc-select mdc-select--outlined">
-              <i class="mdc-select__dropdown-icon"></i>
-              <select
-                class="mdc-select__native-control"
-                id="fontChooser"
-                onchange="updateFont()"
-              >
-                <option value="apompadour_custom">A Pompadour</option>
-                <option value="Roboto">Roboto</option>
-                <option value="'Trebuchet MS'">Trebuchet</option>
-                <option value="'Comic Sans MS'">Comic Sans</option>
-                <option value="custom">Custom...</option>
-              </select>
-              <div class="mdc-notched-outline"></div>
-            </div>
-            <input
-              type="file"
-              id="fontFile"
-              accept=".ttf"
-              hidden="true"
-              oninput="loadCustomFont()"
-            />
-          </div>
-          <div class="input">
-            <div class="label slider">Font size</div>
-            <div class="slider-container">
+    <div class="mdc-drawer__container">
+      <aside class="mdc-drawer" style="transition:.3s">
+        <div class="mdc-drawer__header">
+          <span>Edit</span><span class="close">&times;</span>
+        </div>
+        <div class="mdc-drawer__content">
+          <div class="input-container">
+            <div class="input">
+              <div class="label">Text</div>
               <div
-                class="mdc-slider"
-                id="fontSize"
-                tabindex="0"
-                role="slider"
-                aria-valuemin="16"
-                aria-valuemax="300"
-                aria-valuenow="70"
-                aria-label="Select Value"
-                data-value="70"
+                class="mdc-text-field mdc-text-field--outlined mdc-text-field--no-label"
               >
-                <div class="mdc-slider__track-container">
-                  <div class="mdc-slider__track"></div>
-                </div>
-                <div class="mdc-slider__thumb-container">
-                  <svg class="mdc-slider__thumb" width="21" height="21">
-                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                  </svg>
-                  <div class="mdc-slider__focus-ring"></div>
+                <input
+                  type="text"
+                  class="mdc-text-field__input"
+                  aria-label="Label"
+                  id="textInput"
+                  type="text"
+                  name="words"
+                  value="bubble"
+                />
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
               </div>
-              <input class="slider-manual-input" type="number" />
+            </div>
+            <div class="input">
+              <div class="label">Font</div>
+              <div class="mdc-select mdc-select--outlined">
+                <i class="mdc-select__dropdown-icon"></i>
+                <select
+                  class="mdc-select__native-control"
+                  id="fontChooser"
+                  onchange="updateFont()"
+                >
+                  <option value="apompadour_custom">A Pompadour</option>
+                  <option value="Roboto">Roboto</option>
+                  <option value="'Trebuchet MS'">Trebuchet</option>
+                  <option value="'Comic Sans MS'">Comic Sans</option>
+                  <option value="custom">Custom...</option>
+                </select>
+                <div class="mdc-notched-outline"></div>
+              </div>
+              <input
+                type="file"
+                id="fontFile"
+                accept=".ttf"
+                hidden="true"
+                oninput="loadCustomFont()"
+              />
+            </div>
+            <div class="input">
+              <div class="label slider">Font size</div>
+              <div class="slider-container">
+                <div
+                  class="mdc-slider"
+                  id="fontSize"
+                  tabindex="0"
+                  role="slider"
+                  aria-valuemin="16"
+                  aria-valuemax="300"
+                  aria-valuenow="70"
+                  aria-label="Select Value"
+                  data-value="70"
+                >
+                  <div class="mdc-slider__track-container">
+                    <div class="mdc-slider__track"></div>
+                  </div>
+                  <div class="mdc-slider__thumb-container">
+                    <svg class="mdc-slider__thumb" width="21" height="21">
+                      <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                    </svg>
+                    <div class="mdc-slider__focus-ring"></div>
+                  </div>
+                </div>
+                <input class="slider-manual-input" type="number" />
+              </div>
+            </div>
+            <div class="input checkbox">
+              <div class="mdc-checkbox">
+                <input
+                  type="checkbox"
+                  class="mdc-checkbox__native-control"
+                  id="removeText"
+                  type="checkbox"
+                  name="remove text"
+                  onclick="renderImage()"
+                />
+                <div class="mdc-checkbox__background">
+                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path
+                      class="mdc-checkbox__checkmark-path"
+                      fill="none"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                    />
+                  </svg>
+                  <div class="mdc-checkbox__mixedmark"></div>
+                </div>
+              </div>
+              <div class="label">Hide text</div>
             </div>
           </div>
-          <div class="input checkbox">
-            <div class="mdc-checkbox">
-              <input
-                type="checkbox"
-                class="mdc-checkbox__native-control"
-                id="removeText"
-                type="checkbox"
-                name="remove text"
-                onclick="renderImage()"
-              />
-              <div class="mdc-checkbox__background">
-                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                  <path
-                    class="mdc-checkbox__checkmark-path"
-                    fill="none"
-                    d="M1.73,12.91 8.1,19.28 22.79,4.59"
-                  />
-                </svg>
-                <div class="mdc-checkbox__mixedmark"></div>
+          <div class="input-container">
+            <div class="input">
+              <div class="label">Outline color</div>
+              <div class="colorOptions">
+                <div
+                  class="color selected"
+                  style="background-color:#ff0000;color:white"
+                ></div>
+                <div
+                  class="color"
+                  style="background-color:#ff8000;color:white"
+                ></div>
+                <div
+                  class="color"
+                  style="background-color:#ffff00;color:black"
+                ></div>
+                <div
+                  class="color"
+                  style="background-color:#00ff00;color:black"
+                ></div>
+                <div
+                  class="color"
+                  style="background-color:#00ffff;color:black"
+                ></div>
+                <div
+                  class="color"
+                  style="background-color:#0000ff;color:white"
+                ></div>
+                <div
+                  class="color"
+                  style="background-color:#800080;color:white"
+                ></div>
               </div>
             </div>
-            <div class="label">Hide text</div>
+            <div class="input checkbox">
+              <div class="mdc-checkbox">
+                <input
+                  type="checkbox"
+                  class="mdc-checkbox__native-control"
+                  id="darkMode"
+                  type="checkbox"
+                  name="dark mode"
+                  onclick="renderImage()"
+                />
+                <div class="mdc-checkbox__background">
+                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path
+                      class="mdc-checkbox__checkmark-path"
+                      fill="none"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                    />
+                  </svg>
+                  <div class="mdc-checkbox__mixedmark"></div>
+                </div>
+              </div>
+              <div class="label">Dark background</div>
+            </div>
+          </div>
+          <div class="input-container">
+            <div class="input">
+              <div class="label slider">Outline width</div>
+              <div class="slider-container">
+                <div
+                  class="mdc-slider"
+                  id="outlineThickness"
+                  tabindex="0"
+                  role="slider"
+                  aria-valuemin="1"
+                  aria-valuemax="20"
+                  aria-valuenow="9"
+                  aria-label="Select Value"
+                  data-value="9"
+                >
+                  <div class="mdc-slider__track-container">
+                    <div class="mdc-slider__track"></div>
+                  </div>
+                  <div class="mdc-slider__thumb-container">
+                    <svg class="mdc-slider__thumb" width="21" height="21">
+                      <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                    </svg>
+                    <div class="mdc-slider__focus-ring"></div>
+                  </div>
+                </div>
+                <input class="slider-manual-input" type="number" />
+              </div>
+            </div>
+            <div class="input">
+              <div class="label slider">Gap width</div>
+              <div class="slider-container">
+                <div
+                  class="mdc-slider"
+                  id="gapWidth"
+                  tabindex="0"
+                  role="slider"
+                  aria-valuemin="0"
+                  aria-valuemax="50"
+                  aria-valuenow="11"
+                  aria-label="Select Value"
+                  data-value="11"
+                >
+                  <div class="mdc-slider__track-container">
+                    <div class="mdc-slider__track"></div>
+                  </div>
+                  <div class="mdc-slider__thumb-container">
+                    <svg class="mdc-slider__thumb" width="21" height="21">
+                      <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                    </svg>
+                    <div class="mdc-slider__focus-ring"></div>
+                  </div>
+                </div>
+                <input class="slider-manual-input" type="number" />
+              </div>
+            </div>
           </div>
         </div>
-        <div class="input-container">
-          <div class="input">
-            <div class="label">Outline color</div>
-            <div class="colorOptions">
-              <div
-                class="color selected"
-                style="background-color:#ff0000;color:white"
-              ></div>
-              <div
-                class="color"
-                style="background-color:#ff8000;color:white"
-              ></div>
-              <div
-                class="color"
-                style="background-color:#ffff00;color:black"
-              ></div>
-              <div
-                class="color"
-                style="background-color:#00ff00;color:black"
-              ></div>
-              <div
-                class="color"
-                style="background-color:#00ffff;color:black"
-              ></div>
-              <div
-                class="color"
-                style="background-color:#0000ff;color:white"
-              ></div>
-              <div
-                class="color"
-                style="background-color:#800080;color:white"
-              ></div>
-            </div>
-          </div>
-          <div class="input checkbox">
-            <div class="mdc-checkbox">
-              <input
-                type="checkbox"
-                class="mdc-checkbox__native-control"
-                id="darkMode"
-                type="checkbox"
-                name="dark mode"
-                onclick="renderImage()"
-              />
-              <div class="mdc-checkbox__background">
-                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                  <path
-                    class="mdc-checkbox__checkmark-path"
-                    fill="none"
-                    d="M1.73,12.91 8.1,19.28 22.79,4.59"
-                  />
-                </svg>
-                <div class="mdc-checkbox__mixedmark"></div>
-              </div>
-            </div>
-            <div class="label">Dark background</div>
-          </div>
-        </div>
-        <div class="input-container">
-          <div class="input">
-            <div class="label slider">Outline width</div>
-            <div class="slider-container">
-              <div
-                class="mdc-slider"
-                id="outlineThickness"
-                tabindex="0"
-                role="slider"
-                aria-valuemin="1"
-                aria-valuemax="20"
-                aria-valuenow="9"
-                aria-label="Select Value"
-                data-value="9"
-              >
-                <div class="mdc-slider__track-container">
-                  <div class="mdc-slider__track"></div>
-                </div>
-                <div class="mdc-slider__thumb-container">
-                  <svg class="mdc-slider__thumb" width="21" height="21">
-                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                  </svg>
-                  <div class="mdc-slider__focus-ring"></div>
-                </div>
-              </div>
-              <input class="slider-manual-input" type="number" />
-            </div>
-          </div>
-          <div class="input">
-            <div class="label slider">Gap width</div>
-            <div class="slider-container">
-              <div
-                class="mdc-slider"
-                id="gapWidth"
-                tabindex="0"
-                role="slider"
-                aria-valuemin="0"
-                aria-valuemax="50"
-                aria-valuenow="11"
-                aria-label="Select Value"
-                data-value="11"
-              >
-                <div class="mdc-slider__track-container">
-                  <div class="mdc-slider__track"></div>
-                </div>
-                <div class="mdc-slider__thumb-container">
-                  <svg class="mdc-slider__thumb" width="21" height="21">
-                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                  </svg>
-                  <div class="mdc-slider__focus-ring"></div>
-                </div>
-              </div>
-              <input class="slider-manual-input" type="number" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </aside>
+      </aside>
+    </div>
   </main>
 
   <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>

@@ -366,6 +366,14 @@ input[type="number"] {
 
 /* MDC Overrides */
 
+.mdc-drawer__container {
+  overflow: hidden;
+  width: 256px;
+  background: white;
+  transition: all 0.3s;
+  z-index: 1;
+}
+
 .mdc-drawer {
   height: 100%;
   min-height: 100vh;
@@ -373,8 +381,8 @@ input[type="number"] {
   transition: all 0.3s;
 }
 
-.mdc-drawer.collapsed {
-  transform: translateX(100%);
+.mdc-drawer__container.collapsed {
+  width: 0;
 }
 
 .mdc-drawer__header {
