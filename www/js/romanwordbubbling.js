@@ -91,17 +91,34 @@ function initializeSettings() {
   }
 
   // drawer controls
-  const drawer = document.getElementsByClassName("mdc-drawer")[0];
+  const drawer = document.getElementsByClassName("mdc-drawer__container")[0];
+  const controls = document.getElementsByClassName("controls")[0];
   const close = drawer.getElementsByClassName("close")[0];
   const edit = document.getElementsByClassName("edit")[0];
   close.addEventListener("click", () => {
-    drawer.style.marginRight = mobile ? "-512px" : "-256px";
-    edit.style.marginRight = "0";
+    drawer.classList.add("collapsed");
+    controls.classList.add("collapsed");
   });
   edit.addEventListener("click", () => {
-    drawer.style.marginRight = "0";
-    edit.style.marginRight = "-110px";
+    drawer.classList.remove("collapsed");
+    controls.classList.remove("collapsed");
   });
+
+  // More fonts
+  addFontIfAvailable("Trebuchet", "'Trebuchet MS'");
+  addFontIfAvailable("Comic Sans", "'Comic Sans Ms'");
+}
+
+function addFontIfAvailable(fontText, fontValue) {
+  var fontDetector = new Detector();
+  if (fontDetector.detect(fontValue)) {
+    const fontChooser = document.getElementById("fontChooser");
+    var option = document.createElement("option")
+    option.text = fontText;
+    option.value = fontValue;
+    fontChooser.add(option, fontChooser.length - 1);
+  }
+
 }
 
 function updateFont() {
@@ -274,16 +291,35 @@ function renderImage() {
 }
 
 function submitFeedback() {
+  const description = document.getElementById("feedbackDescription").value;
   data = {
     title: document.getElementById("feedbackTitle").value,
-    description: document.getElementById("feedbackDescription").value
+    email: document.getElementById("feedbackEmail").value,
+    description
   };
-  feedbackDialog.close();
-  var req = new XMLHttpRequest();
-  req.open("POST", "/dG9tbXltYWx2ZWVrYXJ3Yg.html", true);
-  req.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-  console.log("Submitting Feedback %s", JSON.stringify(data));
-  req.send(JSON.stringify(data));
+  console.log(description);
+  if (description) {
+    feedbackDialog.close();
+    const snackbar = document.getElementsByClassName("feedback-snackbar")[0];
+    snackbar.style.bottom = 10;
+    document
+      .getElementsByClassName("feedback-snackbar-close")[0]
+      .addEventListener("click", () => {
+        snackbar.style.bottom = -100;
+      });
+    setTimeout(() => {
+      snackbar.style.bottom = -100;
+    }, 5000);
+    var req = new XMLHttpRequest();
+    req.open("POST", "/dG9tbXltYWx2ZWVrYXJ3Yg.html", true);
+    req.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    console.log("Submitting Feedback %s", JSON.stringify(data));
+    req.send(JSON.stringify(data));
+  } else {
+    document
+      .getElementsByClassName("feedback-error")[0]
+      .classList.remove("hidden");
+  }
 }
 
 function finalize() {

@@ -17,16 +17,7 @@ main {
   display: flex;
 }
 
-@media screen and (max-device-width: 500px) {
-  .mdc-drawer {
-    transform-origin: top right;
-    transform: scale(2);
-  }
-
-  .controls {
-    transform: scale(2);
-  }
-}
+/*  git st */
 
 /* Main Styles */
 
@@ -41,8 +32,13 @@ main {
   display: flex;
   align-items: center;
   position: absolute;
-  right: 24;
+  right: 280px;
   top: 0;
+  transition: all 0.3s;
+}
+
+.controls.collapsed {
+  right: 135px;
 }
 
 .controls div {
@@ -94,7 +90,6 @@ main {
   justify-content: center;
   align-items: center;
   width: calc(100vw - 256px - 66px);
-  position: relative;
 }
 
 .input {
@@ -205,6 +200,35 @@ main {
   fill: #616161;
 }
 
+.feedback-error {
+  color: red;
+  margin: -2px 0 -14px 24px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.feedback-snackbar {
+  position: fixed;
+  left: 50%;
+  bottom: -100px;
+  transform: translateX(-50%);
+  transition: all 0.3s;
+  background: #333;
+  color: white;
+  font-size: 14px;
+  padding: 16px;
+  width: 300px;
+  z-index: 9999999;
+  display: flex;
+  justify-content: space-between;
+}
+
+.feedback-snackbar-close {
+  color: #448aff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .hidden {
   display: none;
 }
@@ -260,6 +284,7 @@ input[type="number"] {
 }
 
 #feedbackTitle,
+#feedbackEmail,
 #feedbackDescription {
   outline: none;
   border: none;
@@ -341,11 +366,23 @@ input[type="number"] {
 
 /* MDC Overrides */
 
+.mdc-drawer__container {
+  overflow: hidden;
+  width: 256px;
+  background: white;
+  transition: all 0.3s;
+  z-index: 1;
+}
+
 .mdc-drawer {
   height: 100%;
   min-height: 100vh;
   border-left: 1px solid #dedede;
-  transition: margin-right 0.3s;
+  transition: all 0.3s;
+}
+
+.mdc-drawer__container.collapsed {
+  width: 0;
 }
 
 .mdc-drawer__header {
