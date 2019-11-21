@@ -103,6 +103,22 @@ function initializeSettings() {
     drawer.classList.remove("collapsed");
     controls.classList.remove("collapsed");
   });
+
+  // More fonts
+  addFontIfAvailable("Trebuchet", "'Trebuchet MS'");
+  addFontIfAvailable("Comic Sans", "'Comic Sans Ms'");
+}
+
+function addFontIfAvailable(fontText, fontValue) {
+  var fontDetector = new Detector();
+  if (fontDetector.detect(fontValue)) {
+    const fontChooser = document.getElementById("fontChooser");
+    var option = document.createElement("option")
+    option.text = fontText;
+    option.value = fontValue;
+    fontChooser.add(option, fontChooser.length - 1);
+  }
+
 }
 
 function updateFont() {
