@@ -27,7 +27,7 @@ def send_feedback():
     message = mail.EmailMessage(sender="romanwordbubbling@gmail.com",
                    to="romanwordbubbling@gmail.com",
                    subject=data['title'],
-                   body=data['description'])
+                   body="<" + data['email'] + ">\n" + data['description'])
     message.send()
     return """<html><body>Feedback received</body></html>"""
   else:
