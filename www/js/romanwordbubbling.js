@@ -35,6 +35,13 @@ let feedbackDialogue;
 function initializeSettings() {
   const mobile = window.outerWidth < 500 ? true : false;
 
+  if (typeof mdc == "undefined") {
+    document.body.innerHTML = "Error: could not load interface compoments<br>" + 
+      "Please let us know about this error by emailing us at romanwordbubbling at gmail<br>" +
+      "In the meantime, you can use our <a href='https://roman-word-bubbling-stable.appspot.com'>alternate version with a simplified interface</a>";
+    return;
+  }
+
   // dialogs
   const infoDialog = new mdc.dialog.MDCDialog(
     document.getElementById("info-dialog")
