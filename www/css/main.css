@@ -416,6 +416,7 @@ input[type="number"] {
 .mdc-text-field--outlined .mdc-text-field__input {
   padding: 7px;
   font-size: 14px;
+  resize: none;
 }
 
 .mdc-select {

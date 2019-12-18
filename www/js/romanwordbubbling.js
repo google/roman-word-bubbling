@@ -17,11 +17,7 @@
  */
 
 var fontName = "apompadour_custom";
-// On desktop (or anything with a wide enough screen) use full name for sample
-// Text needs 744, (?) menu is 66, drawer is 256, 15 for scrollbar
-if (window.innerWidth >= 744 + 256 + 66 + 15) {
-  document.getElementById("textInput").value = "Roman Word Bubbling";
-}
+
 document.getElementById("textInput").addEventListener(
   "keyup",
   function() {
@@ -184,7 +180,7 @@ function renderImage() {
     (fontSize *
       parseInt(document.getElementById("outlineThickness").dataset.value, 10)) /
     100;
-  let padding = fontSize / 4;
+  let padding = gapWidth/2 + outlineThickness;
   let removeText = document.getElementById("removeText").checked;
   let darkMode = document.getElementById("darkMode").checked;
   let text = document.getElementById("textInput").value;
@@ -192,6 +188,20 @@ function renderImage() {
   let blurRadius = 3;
 
   let borderColorRgb = getColor();
+  let color = null;
+  r = parseInt(borderColorRgb[0], 10);
+  g = parseInt(borderColorRgb[1], 10);
+  b = parseInt(borderColorRgb[2], 10);
+
+  if (darkMode) {
+    document.body.style.backgroundColor = "black";
+    // Invert the color for dark mode because it will get inverted back later
+    // Doing it this way ensures the blurring will use the right background color
+    color = new cv.Scalar(255 - r, 255 - g, 255 - b);
+  } else {
+    document.body.style.backgroundColor = "transparent";
+    color = new cv.Scalar(r, g, b);
+  }
 
   var lines = text.split('\n');
 
@@ -240,20 +250,6 @@ function renderImage() {
     cv.RETR_EXTERNAL,
     cv.CHAIN_APPROX_SIMPLE
   );
-  let color = null;
-  r = parseInt(borderColorRgb[0], 10);
-  g = parseInt(borderColorRgb[1], 10);
-  b = parseInt(borderColorRgb[2], 10);
-
-  if (darkMode) {
-    document.body.style.backgroundColor = "black";
-    // Invert the color for dark mode because it will get inverted back later
-    // Doing it this way ensures the blurring will use the right background color
-    color = new cv.Scalar(255 - r, 255 - g, 255 - b);
-  } else {
-    document.body.style.backgroundColor = "transparent";
-    color = new cv.Scalar(r, g, b);
-  }
   cv.drawContours(
     contourImage,
     contours,
