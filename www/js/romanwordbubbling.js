@@ -101,10 +101,12 @@ function initializeSettings() {
   close.addEventListener("click", () => {
     drawer.classList.add("collapsed");
     controls.classList.add("collapsed");
+    renderImage();
   });
   edit.addEventListener("click", () => {
     drawer.classList.remove("collapsed");
     controls.classList.remove("collapsed");
+    renderImage();
   });
 
   // More fonts
@@ -203,27 +205,104 @@ function renderImage() {
     color = new cv.Scalar(r, g, b);
   }
 
-  var lines = text.split('\n');
+  tCtx.font = fontSize + "px " + fontName; // Has to be set every time
+  var spaceWidth = tCtx.measureText(" ").width;
+  var lineHeight = 1.25 * fontSize + padding; // TODO: padding*2
 
-  var lineHeight = (1.25 * fontSize + padding);
-  tCtx.canvas.height = lines.length * lineHeight + padding; // + one extra padding for bottom
+  var lines = text.split('\n');
+  var lineCount = 0;
   var maxLineWidth = 0;
+  var images = [];
   for (var i = 0; i < lines.length; i++) {
-    tCtx.font = fontSize + "px " + fontName; // Has to be set every time
-    var lineWidth = tCtx.measureText(lines[i]).width + padding * 2;
+    images[lineCount] = [];
+    var words = lines[i].split(" ");
+    var x = padding - spaceWidth; // So we don't need an if at the start of the loop
+    var wordCount = 0;
+    for (var j = 0; j < words.length; j++) {
+      x = x + spaceWidth;
+      var word = words[j];
+      if (word === "") {
+        continue;
+      }
+      // TODO: Check for special characters before measuring
+      tCtx.font = fontSize + "px " + fontName; // Has to be set every time
+      var wordWidth = tCtx.measureText(word).width;
+      // If this isn't the first word and it overruns the line, start a new line
+      const drawer = document.getElementsByClassName("mdc-drawer__container")[0];
+      var drawerWidth = 256;
+      if(drawer.classList.contains("collapsed")) {
+        drawerWidth = 0;
+      }
+      if (x + wordWidth > window.innerWidth - drawerWidth && wordCount > 0) {
+        // TODO: A lot of this is duplicated code, clean it up
+        var lineWidth = x + padding;
+        if (lineWidth > maxLineWidth) {
+          maxLineWidth = lineWidth;
+        }
+        wordCount = 0;
+        x = padding;
+        lineCount++;
+        images[lineCount] = [];
+      }
+      tCtx.canvas.height = lineHeight + padding*2;
+      tCtx.canvas.width = wordWidth + padding*2;
+
+      tCtx.fillStyle = "white";
+      tCtx.fillRect(0, 0, tCtx.canvas.width, tCtx.canvas.height);
+      tCtx.font = fontSize + "px " + fontName; // Has to be set every time
+      tCtx.fillStyle = "black";
+      tCtx.fillText(word, padding, fontSize + padding / 2); // TODO: check the /2
+    
+      let img = cv.imread("textCanvas");
+      let borderImage = bubbleWord(img, color, removeText, darkMode, gapWidth, outlineThickness, blurRadius);
+
+      images[lineCount][wordCount] = [borderImage, new cv.Rect(x, lineHeight*lineCount, tCtx.canvas.width, tCtx.canvas.height)];
+
+      x = x + wordWidth;
+      wordCount++;
+    }
+    var lineWidth = x + padding;
     if (lineWidth > maxLineWidth) {
       maxLineWidth = lineWidth;
     }
-    tCtx.canvas.width = maxLineWidth;
+    lineCount++;
   }
-  tCtx.fillStyle = "white";
-  tCtx.fillRect(0, 0, tCtx.canvas.width, tCtx.canvas.height);
-  tCtx.font = fontSize + "px " + fontName; // Not sure why you have to set the font size again
+  // Reset
+  tCtx.canvas.height = lineCount * lineHeight + padding*2; // + one extra padding for bottom
+  tCtx.canvas.width = maxLineWidth + padding*2;
+  // Clear
+  let finalImage = cv.Mat.zeros(tCtx.canvas.height, tCtx.canvas.width, cv.CV_8UC3);
+  if (!darkMode) {
+    cv.bitwise_not(finalImage, finalImage);
+  }
   tCtx.fillStyle = "black";
-  for (var i = 0; i < lines.length; i++) {
-    tCtx.fillText(lines[i], padding, fontSize + padding / 2 + i*lineHeight);
+  tCtx.fillRect(0, 0, tCtx.canvas.width, tCtx.canvas.height);
+
+  for (var i = 0; i < images.length; i++) {
+    for (var j = 0; j < images[i].length; j++) {
+      var image = images[i][j][0];
+      cv.imshow("textCanvas", image);
+      outputImage = document.getElementById("output");
+      outputImage.src = document.getElementById("textCanvas").toDataURL();
+      var rect = images[i][j][1];
+      let dest = finalImage.roi(rect);
+      if(darkMode) {
+        cv.bitwise_or(dest, image, dest);
+      } else {
+        cv.bitwise_and(dest, image, dest);
+      }
+      image.delete();
+    }
   }
-  let img = cv.imread("textCanvas");
+  //finalImage.roi(new cv.Rect(0, 0, tCtx.canvas.width, tCtx.canvas.height));
+
+  cv.imshow("textCanvas", finalImage);
+  outputImage = document.getElementById("output");
+  outputImage.src = document.getElementById("textCanvas").toDataURL();
+  finalImage.delete();
+}
+
+function bubbleWord(img, color, removeText, darkMode, gapWidth, outlineThickness, blurRadius) {
   let shape = cv.Mat.zeros(img.cols, img.rows, cv.CV_8UC1);
   cv.cvtColor(img, shape, cv.COLOR_RGBA2GRAY, 0);
   cv.bitwise_not(shape, shape);
@@ -293,16 +372,14 @@ function renderImage() {
     cv.bitwise_not(borderImage, borderImage);
   }
 
-  cv.imshow("textCanvas", borderImage);
-  outputImage = document.getElementById("output");
-  outputImage.src = document.getElementById("textCanvas").toDataURL();
   img.delete();
   shape.delete();
   contours.delete();
   hierarchy.delete();
   contourImage.delete();
   textImage.delete();
-  borderImage.delete();
+
+  return borderImage;
 }
 
 function submitFeedback() {
