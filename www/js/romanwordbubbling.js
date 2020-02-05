@@ -16,6 +16,7 @@
  *
  */
 
+const DEBUG = false;
 var fontName = "apompadour_custom";
 
 document.getElementById("textInput").addEventListener(
@@ -216,7 +217,7 @@ function renderImage() {
   for (var i = 0; i < lines.length; i++) {
     images[lineCount] = [];
     var words = lines[i].split(" ");
-    var x = padding - spaceWidth; // So we don't need an if at the start of the loop
+    var x = -spaceWidth; // So we don't need an if at the start of the loop
     var wordCount = 0;
     for (var j = 0; j < words.length; j++) {
       x = x + spaceWidth;
@@ -240,7 +241,7 @@ function renderImage() {
           maxLineWidth = lineWidth;
         }
         wordCount = 0;
-        x = padding;
+        x = 0;
         lineCount++;
         images[lineCount] = [];
       }
@@ -251,7 +252,7 @@ function renderImage() {
       tCtx.fillRect(0, 0, tCtx.canvas.width, tCtx.canvas.height);
       tCtx.font = fontSize + "px " + fontName; // Has to be set every time
       tCtx.fillStyle = "black";
-      tCtx.fillText(word, padding, fontSize + padding / 2); // TODO: check the /2
+      tCtx.fillText(word, padding, fontSize + padding);
     
       let img = cv.imread("textCanvas");
       let borderImage = bubbleWord(img, color, removeText, darkMode, gapWidth, outlineThickness, blurRadius);
@@ -268,15 +269,13 @@ function renderImage() {
     lineCount++;
   }
   // Reset
-  tCtx.canvas.height = lineCount * lineHeight + padding*2; // + one extra padding for bottom
-  tCtx.canvas.width = maxLineWidth + padding*2;
+  tCtx.canvas.height = lineCount * lineHeight + padding*2; // extra padding for top/bottom (no overlap)
+  tCtx.canvas.width = maxLineWidth + padding;
   // Clear
   let finalImage = cv.Mat.zeros(tCtx.canvas.height, tCtx.canvas.width, cv.CV_8UC3);
   if (!darkMode) {
     cv.bitwise_not(finalImage, finalImage);
   }
-  tCtx.fillStyle = "black";
-  tCtx.fillRect(0, 0, tCtx.canvas.width, tCtx.canvas.height);
 
   for (var i = 0; i < images.length; i++) {
     for (var j = 0; j < images[i].length; j++) {
@@ -294,7 +293,7 @@ function renderImage() {
       image.delete();
     }
   }
-  //finalImage.roi(new cv.Rect(0, 0, tCtx.canvas.width, tCtx.canvas.height));
+  debugOutline(finalImage, new cv.Scalar(255, 0, 0));
 
   cv.imshow("textCanvas", finalImage);
   outputImage = document.getElementById("output");
@@ -379,7 +378,15 @@ function bubbleWord(img, color, removeText, darkMode, gapWidth, outlineThickness
   contourImage.delete();
   textImage.delete();
 
+  debugOutline(borderImage, new cv.Scalar(0, 0, 255));
+
   return borderImage;
+}
+
+function debugOutline(img, color) {
+  if(DEBUG) {
+    cv.rectangle(img, new cv.Point(0,0), new cv.Point(img.size().width-1, img.size().height-1), color);
+  }
 }
 
 function submitFeedback() {
