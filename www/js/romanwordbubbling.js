@@ -183,7 +183,7 @@ function renderImage() {
     (fontSize *
       parseInt(document.getElementById("outlineThickness").dataset.value, 10)) /
     100;
-  let padding = gapWidth/2 + outlineThickness;
+  let padding = gapWidth + outlineThickness;
   let removeText = document.getElementById("removeText").checked;
   let darkMode = document.getElementById("darkMode").checked;
   let text = document.getElementById("textInput").value;
