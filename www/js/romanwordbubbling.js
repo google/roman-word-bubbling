@@ -35,13 +35,6 @@ let feedbackDialogue;
 function initializeSettings() {
   const mobile = window.outerWidth < 500 ? true : false;
 
-  if (typeof mdc == "undefined") {
-    document.body.innerHTML = "Error: could not load interface compoments<br>" + 
-      "Please let us know about this error by emailing us at romanwordbubbling at gmail<br>" +
-      "In the meantime, you can use our <a href='https://roman-word-bubbling-stable.appspot.com'>alternate version with a simplified interface</a>";
-    return;
-  }
-
   // dialogs
   const infoDialog = new mdc.dialog.MDCDialog(
     document.getElementById("info-dialog")
@@ -171,6 +164,7 @@ function loadCustomFont() {
   }
 }
 function renderImage() {
+  try {
   let fontSize = parseInt(
     document.getElementById("fontSize").dataset.value,
     10
@@ -295,6 +289,9 @@ function renderImage() {
   contourImage.delete();
   textImage.delete();
   borderImage.delete();
+} catch (e) {
+  showError(e);
+}
 }
 
 function submitFeedback() {
@@ -335,5 +332,36 @@ function finalize() {
   renderImage();
 }
 
-window.onload = initializeSettings();
+function showError(e) {
+  bodyHtml = "Something went wrong; please try again soon.<br />"
+  + "If the tool isn't working, you can try the <a href='https://roman-word-bubbling-stable.appspot.com'>old version</a> for now.<br />"
+  + "If this keeps happening, let us know.<br />"
+  + "Click the feedback button or email romanwordbubbling (at gmail.com)<br />"
+  + "Please include the type of device you are using, browser name, and technical details below<br /><br />"
+  + "Technical details: <br />";
+
+  if (e.line != null) {
+    bodyHtml = bodyHtml + "On line " + e.line + "<br />"
+  }
+
+  if (e.stack != null) {
+    bodyHtml = bodyHtml + e.stack + "<br />"
+  } else {
+    bodyHtml = bodyHtml + e.name + ": " + e.message + "<br />";
+  }
+  
+  bodyHtml = bodyHtml + "<br /><br />";
+
+  document.getElementById("errorArea").innerHTML = bodyHtml;
+  document.getElementById("errorArea").hidden = false;
+  return false;
+}
+
+window.onload = function() {
+  try {
+    initializeSettings();
+  } catch(e) {
+    this.showError(e);
+  }
+}
 document.onload = finalize();

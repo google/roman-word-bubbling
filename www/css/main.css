@@ -42,6 +42,7 @@ main {
 }
 
 .controls div {
+  z-index: 2;
   position: relative;
   display: flex;
   justify-content: center;
@@ -49,6 +50,8 @@ main {
 }
 
 .edit {
+  z-index: 2;
+  position: relative;
   color: #999;
   font-weight: 600;
   font-size: 14px;
@@ -121,7 +124,10 @@ main {
 .label.slider {
   margin-bottom: 0;
 }
+
 .font_preload_hack_for_browsers_that_do_not_support_rel_preload {
+  z-index: 999;
+  color: #616161;
   font-family: "apompadour_custom", sans-serif;
   font-size: 20px;
   position: fixed;
@@ -129,6 +135,21 @@ main {
   left: 0;
   height: 100vh;
   width: 100vw;
+}
+
+.error-message {
+  z-index: 1;
+  font-family: "apompadour_custom", sans-serif;
+  font-size: 20px;
+  color: #616161;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.output-image {
+  z-index: 2;
+  position: fixed;
 }
 
 .slider-container {
@@ -322,7 +343,7 @@ input[type="number"] {
 /* Loader styles */
 
 .loader {
-  z-index: 999;
+  z-index: 998;
   position: fixed;
   top: 0;
   left: 0;
@@ -371,7 +392,7 @@ input[type="number"] {
   width: 256px;
   background: white;
   transition: all 0.3s;
-  z-index: 1;
+  z-index: 3;
 }
 
 .mdc-drawer {

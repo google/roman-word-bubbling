@@ -188,6 +188,12 @@
   </div>
   <main>
     <div class="canvas-container">
+        <div
+        id="errorArea"
+        class="error-message"
+        hidden="true"
+      >
+      </div>
       <div class="controls" align="right">
         <div><a class="info">i</a><span class="tooltip">Info</span></div>
         <div><a class="help">?</a><span class="tooltip">Help</span></div>
@@ -211,13 +217,22 @@
         id="loadingBackground"
         class="font_preload_hack_for_browsers_that_do_not_support_rel_preload"
       >
-        This page may take a minute or two to load. <br />
-        If it fails to load, email romanwordbubbling (at gmail.com) <br />
-        You can also access the old version at: <br />
-        https://roman-word-bubbling-stable.appspot.com/
+        <noscript>
+          This tool requires javascript to run.<br />
+          If you can see this text, you need to enable javascript.<br />
+          <a href="https://www.enable-javascript.com/">enable-javascript.com</a> contains instructions for enabling javascript in all modern browsers.
+          <!-- Push the other error message off screen. There is a better way to do this, I'm sure. -->
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        </noscript>
+        Loading...
       </span>
       <canvas id="textCanvas" width="400" height="200" hidden="true"></canvas>
-      <img id="output"></img>
+      <div class="output-image">
+        <img id="output"></img>
+      </div>
     </div>
     <br /><br />
     <div class="mdc-drawer__container">
